@@ -1,0 +1,18 @@
+#page-nav a:hover { background:none; text-decoration:underline; color:#fff; }
+#page-nav .ico-home { margin:7px 0 0px 0; padding:0; }
+#nav li a span.sf-sub-indicator { display:none; }
+#cat-nav #search input.submit { right:18px; }
+#twitter-top div.tweet, #twitter-top div.logo { background:none;}
+#twitter-top div.tweet{ width:400px; } 
+.widget { background-image:none; }
+a.btn { background-image:none; color:#fff !important; }
+#comments ul.children { background:none; }
+#commentform #submit, #searchform .submit, #comments a.comment-reply-link { background-image:none; padding: 4px 2px; }
+#tabs { background:#FEFEFE; }
+#tabs .inside { padding-top:5px; background: none; }
+#tabs ul.wooTabs li a.selected, #tabs ul.wooTabs li a:hover{ background:none; }
+.widget h3 { padding-top:9px; height:35px; }
+#loopedSlider .featured-nav  { width:316px; }
+.featured-banner { display:none; }
+#loopedSlider ul.pagination li a { width:276px; }
+.post-bottom { height:44px; border-bottom:1px solid #ccc; }

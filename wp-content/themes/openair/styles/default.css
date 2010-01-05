@@ -1,0 +1,181 @@
+#pages-top {
+	background:#2c4a6c url(default/pages-top.gif) repeat-x bottom center;
+	border-bottom:1px solid #4e6d8e;
+}
+
+#header {
+	background:#e1ebef url(default/header.gif) repeat-x bottom center;
+}
+
+.search-form {
+	background:url(default/search-bar.gif) repeat-x top center;
+}
+
+#logo-back {
+	background:url(default/logo-back.gif) no-repeat bottom left;
+}
+
+#categories {
+	background:#e3edf0 url(default/categories.gif) repeat-x top center;
+	border-top:1px solid #bdd3db;
+}
+
+#featured {
+	background:#79a6cb url(default/featured.gif) repeat-x top center;
+	border-bottom:1px solid #79a6cb;
+}
+
+.featured-norm {
+	margin:0; padding:0;
+	width:auto; height:auto;
+	background:url(default/featured-norm.gif) no-repeat top center;
+	line-height:20px;
+}
+
+.featured-blog {
+	margin:0; padding:0;
+	width:auto; height:auto;
+	background:url(default/featured-blog.gif) no-repeat top center;
+	line-height:20px;
+}
+
+.featured-small {
+	margin:0; padding:0;
+	width:auto; height:103px;
+	background:url(default/featured-small.gif) no-repeat top center;
+}
+
+#content {
+	background:#FFF url(default/content.gif) repeat-x top center;
+	border-top:6px solid #d1e1e7;
+	border-bottom:1px solid #e6e6e6;
+}
+
+	.comment-meta, .post-content {
+		border-left:1px solid #d9e2e9;
+	}
+
+.post-list-last {
+	border-bottom:1px solid #d9e2e9;
+}
+
+.post-list li.post-last, .post-list-last li.post-last, .post-list li.post-last-blank {
+	border-bottom:1px solid #d9e2e9;
+}
+
+.post-list li.post, .post-list li.post-last, .post-list-last li.post, .post-list-last li.post-last, .post-list li.post-last-blank, .commentlist li {
+	background:url(default/postback.gif) repeat-y;
+}
+
+.post-list li.post-blank, .post-list-last li.post-blank, .post-list li.post, .post-list li.post-last, .post-list-last li.post, .post-list-last li.post-last, .post-list li.post-last-blank, .post-list li.other-post-last, .post-list-last li.other-post-last, .post-list li.archives, .post-list-last li.archives, .post-list li.other-post, .post-list-last li.other-post {
+	border-color:#d9e2e9;
+}
+
+.meta {
+	background:#fafbfd url(default/meta.gif) repeat-x top center;
+	border-left:1px solid #d9e2e9;
+}
+
+.related-posts, .tags-top {
+	border-top:1px solid #d9e2e9;
+}
+
+.comment-content {
+	border-left:1px solid #e5e9ee;
+}
+
+blockquote {
+	background:#f0f4f7;
+	border:1px solid #d9e4ef;
+}
+
+h3, h3 a:link, h3 a:active, h3 a:visited {
+	color:#bc4d10;
+}
+
+.post-content h1, h1.comments-title, .post-content h2, .post-content h2.title, h2.comments-title, .post-content h3, .post-content h4, .post-content h5 {
+	color:#484a4b;
+}
+
+h4, h4.related-posts, h4.tags {
+	color:#929ba3;
+}
+
+h5 {
+	color:#5c6a76;
+}
+
+a:link, a:active, a:visited {
+	color: #2F4F73;
+}
+
+h2.featured a:link, h2.featured a:active, h2.featured a:visited, a.twitter:link, a.twitter:active, a.twitter:visited, a.email:link, a.email:active, a.email:visited, a.rss-big:link, a.rss-big:active, a.rss-big:visited, .featured-norm, .featured-blog, h2.featured {
+	color:#d9eff7;
+}
+
+#pages-list li, #pages-list li.blank {
+	background:url(../images/page-list-divider.gif) no-repeat center left;
+}
+#pages-list li.blank {
+	background:none;
+}
+
+#pages-list li a, a.rss:link, a.rss:active, a.rss:visited, #pages-top {
+	color: #d1dce7;
+}
+
+.meta {
+	color:#676d72;
+}
+
+#footer, a.woothemes-link:link, a.woothemes-link:active, a.woothemes-link:visited {
+	color:#a7a1a1;
+}
+
+.textfield {
+	color:#b2b5b6;
+}
+
+#category-list li a {
+	color:#708389;
+}
+
+#category-list li.active a, #category-list li a:hover {
+	color:#517d8d;
+}
+
+#category-list li.current-cat, #category-list li:hover {
+	background:#d7e5e9;
+}
+
+.related-posts-list li a:hover, .meta a:hover {
+	color:#2f5074;
+}
+
+.gray, .gray a, h2.gray a {
+	color:#71787b;
+}
+
+.lightgray, .lightgray a {
+	color:#b2b5b6;
+}
+
+.orange, caption {
+	color:#d94d00;
+}
+
+.grayblue, .grayblue a, .related_posts li a, .meta a {
+	color:#748a9c;
+}
+
+.darkblue, .darkblue a {
+	color:#112842;
+}
+
+.darkgray, .darkgray a, th {
+	color:#3a3c3e;
+}
+
+#sidebar a, #sidebar {
+	color:#9ca0a4;
+}

@@ -1,0 +1,24 @@
+*** WooThemes Framework Changelog ***
+
+2009.08.05 - Version 1.0.5
+ * admin-interface.php - Fixed but with Abolute path on Theme version checker.
+
+2009.08.03 - Version 1.0.4a
+ * admin-interface.php - Removed Update notifier. Added support for '&' in select boxes.
+
+2009.07.27 - Version 1.0.4
+ * admin-functions.php - Modified woo_get_image(), added get_page_id() function, added post [insert] shortcode.
+ * admin-interface.php - Added Update Notifier,
+ * admin-setup.php - Added custom CSS header insert, added encrypted footer woo_ options output (debugging).
+
+2009.07.16 - Version 1.0.3
+ * admin-functions.php - Fixed woo_get_image syntax.
+
+2009.07.07 - Version 1.0.2
+ * admin-custom.php - Added alternative method. Javascript <form id="post"> hack for IE7. ie. Custom field uploading IE7 fix.
+
+2009.07.07 - Version 1.0.1
+ * admin-functions.php - Added extra "$force" argument to the woo_get_image function. Adds ability to force woo_get_images to be set to given dimention when GD library is not available. (small image forced resize bug + img load missing height bug)
+
+2009.07.06 - Version 1.0.0
+ * First Logged release

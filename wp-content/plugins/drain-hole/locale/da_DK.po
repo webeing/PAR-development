@@ -1,0 +1,857 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Drain Hole på dansk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-12 18:36+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Georg S. Adamsen <g.s.adamsen@gmail.com>\n"
+"Language-Team:  <g.s.adamsen@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\drain-hole\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\drain-hole\n"
+
+#: d:\wordpress\plugins\drain-hole/ajax.php:22
+msgid "<p style=\"color: red\">You are not allowed access to this resource</p>"
+msgstr "<p style=\"color: red\">Du har ikke adgang til denne ressource</p>"
+
+#: d:\wordpress\plugins\drain-hole/ajax.php:30
+msgid "<p style=\"color: red\">That function is not defined</p>"
+msgstr "<p style=\"color: red\">Denne funktion er ikke defineret</p>"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:126
+msgid "Drainhole Statistics"
+msgstr "Ventil-statistik"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:133
+msgid "Drain Hole Help"
+msgstr "Ventil-Hjælp"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:134
+msgid "Drain Hole Documentation"
+msgstr "Ventil-Dokumentation"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:135
+msgid "Drain Hole Support Forum"
+msgstr "Ventil-Supportforum"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:136
+msgid "Drain Hole Bug Tracker"
+msgstr "Ventil-Bugdatabase"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:137
+msgid "Drain Hole FAQ"
+msgstr "Ventil-OSS"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:138
+msgid "Please read the documentation and FAQ, and check the bug tracker, before asking a question."
+msgstr "Læs venligst dokumentationen og OSS'en, og tjek bugdatabasen, inden du stiller et spørgsmål."
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:267
+msgid "Drain Hole"
+msgstr "Ventil"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:424
+msgid "Your version was added succesfully"
+msgstr "Din version blev tilføjet"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:455
+msgid "No new files were found"
+msgstr "Der blev ikke fundet nye filer"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:457
+#, php-format
+msgid "%d new file was found"
+msgid_plural "%d new files were found"
+msgstr[0] "Der blev fundet %d ny fil"
+msgstr[1] "Der blev fundet %d nye filer"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:548
+msgid "The Drain Hole was successfully created"
+msgstr "Ventil blev oprettet"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:552
+msgid "The Drain Hole was not created - "
+msgstr "Ventil blev ikke oprettet"
+
+#: d:\wordpress\plugins\drain-hole/drain-hole.php:591
+msgid "Your options have been updated"
+msgstr "Dine indstillinger er blevet opdateret"
+
+#: d:\wordpress\plugins\drain-hole/plugin.php:656
+msgid "How many widgets would you like?"
+msgstr "Hvor mange widgets vil du have?"
+
+#: d:\wordpress\plugins\drain-hole/plugin.php:663
+msgid "Save"
+msgstr "Gem"
+
+#: d:\wordpress\plugins\drain-hole/charts/file.php:63
+#: d:\wordpress\plugins\drain-hole/charts/file.php:186
+#, php-format
+msgid "Hourly downloads over time (%1s %2d, %3d)"
+msgstr "Download pr. time over tid (%1s %2d %3d)"
+
+#: d:\wordpress\plugins\drain-hole/charts/file.php:96
+#: d:\wordpress\plugins\drain-hole/charts/file.php:218
+#: d:\wordpress\plugins\drain-hole/charts/hole.php:182
+#, php-format
+msgid "Daily downloads over time (%1s %2s)"
+msgstr "Download pr. dag over tid (%1s %2s)"
+
+#: d:\wordpress\plugins\drain-hole/charts/file.php:126
+#: d:\wordpress\plugins\drain-hole/charts/file.php:247
+#: d:\wordpress\plugins\drain-hole/charts/hole.php:211
+#, php-format
+msgid "Monthly downloads over time (%2s)"
+msgstr "Download pr. måned over tid (%2s)"
+
+#: d:\wordpress\plugins\drain-hole/models/auditor.php:39
+msgid "Drain Hole management"
+msgstr "Ventil-Håndtering"
+
+#: d:\wordpress\plugins\drain-hole/models/auditor.php:74
+msgid "Drain Hole database installed"
+msgstr "Ventil-databasen er oprettet"
+
+#: d:\wordpress\plugins\drain-hole/models/auditor.php:78
+msgid "Drain Hole created"
+msgstr "Ventil blev oprettet"
+
+#: d:\wordpress\plugins\drain-hole/models/auditor.php:82
+msgid "Drain Hole scan"
+msgstr "Ventil-skanning"
+
+#: d:\wordpress\plugins\drain-hole/models/auditor.php:86
+msgid "Drain Hole file upload"
+msgstr "Ventil-filupload"
+
+#: d:\wordpress\plugins\drain-hole/models/charts.php:68
+msgid "next"
+msgstr "næste"
+
+#: d:\wordpress\plugins\drain-hole/models/charts.php:107
+msgid "previous"
+msgstr "forrige"
+
+#: d:\wordpress\plugins\drain-hole/models/file.php:446
+#, php-format
+msgid "Download version %s of %s"
+msgstr "Download version %s af %s"
+
+#: d:\wordpress\plugins\drain-hole/models/file.php:448
+#, php-format
+msgid "Download %s"
+msgstr "Download %s"
+
+#: d:\wordpress\plugins\drain-hole/models/hole.php:224
+#, php-format
+msgid "could not create directory <code>%s</code><br/>You have insufficient permissions - create the directory with FTP or assign group/other write permissions to the parent directory and try again"
+msgstr "kunne ikke oprette mappen <code>%s</code><br/>Du har ikke tilstrækkelig rettigheder. Opret mappen med FTP eller tildel gruppe-/andre skrivetilladelser til \"forælder\"-mappen og prøv igen"
+
+#: d:\wordpress\plugins\drain-hole/models/hole.php:235
+msgid "you must supply a unique URL (without <code>http://</code> prefix) and directory"
+msgstr "du skal angive en unik URL (uden <code>http://</code>-præfikset) og mappe"
+
+#: d:\wordpress\plugins\drain-hole/models/hole.php:254
+#, php-format
+msgid "your host has restricted access to <code>%s</code> through the <code>open_basedir</code> setting.  You can ask your host to reconfigure the settings or you can try again in one of these allowed directories:"
+msgstr "din vært har begrænset adgangen til <code>%s</code> med <code>open_basedir</code>-indstillingen. Du kan spørge værten om at rekonfigurere indstillingerne eller du kan prøve igen i en af disse mapper, der er adgang til:"
+
+#: d:\wordpress\plugins\drain-hole/models/pager.php:402
+msgid "Previous"
+msgstr "Forrige"
+
+#: d:\wordpress\plugins\drain-hole/models/pager.php:403
+msgid "Next"
+msgstr "Næste"
+
+#: d:\wordpress\plugins\drain-hole/models/pager.php:461
+#, php-format
+msgid "%d per-page"
+msgstr "%d pr. side"
+
+#: d:\wordpress\plugins\drain-hole/models/pager.php:470
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Viser %s&#8211;%s af %s"
+
+#: d:\wordpress\plugins\drain-hole/models/upgrade.php:192
+msgid "First version"
+msgstr "Første udgave"
+
+#: d:\wordpress\plugins\drain-hole/models/widget.php:39
+msgid "Title"
+msgstr "Titel"
+
+#: d:\wordpress\plugins\drain-hole/models/widget.php:43
+msgid "Count"
+msgstr "Antal"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:6
+#, php-format
+msgid "File Charts for %s"
+msgstr "Fildiagram for %s"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:13
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:15
+msgid "Chart"
+msgstr "Diagram"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:15
+msgid "Downloads over time"
+msgstr "Downloads over tid"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:18
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:21
+msgid "Display"
+msgstr "Visning"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:20
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:29
+msgid "Hourly"
+msgstr "Pr. time"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:21
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:30
+msgid "Daily"
+msgstr "Pr. dag"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:22
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:31
+msgid "Monthly"
+msgstr "Pr. måned"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_files.php:27
+msgid "Show"
+msgstr "Vis"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:8
+#, php-format
+msgid "Hole Charts for %s"
+msgstr "Hul-diagram for %s"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:17
+msgid "Downloads as percentage"
+msgstr "Downloads i procent"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:18
+msgid "Downloads over time (grouped)"
+msgstr "Downloads over tid (grupperet)"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:24
+msgid "Pie chart"
+msgstr "Lagkagediagram"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/chart_holes.php:25
+msgid "Bar chart"
+msgstr "Søjlediagram"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:4
+msgid "Drain Hole | Statistics for"
+msgstr "Ventil | Statistik for"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:6
+msgid "Drain Hole | Downloads"
+msgstr "Ventil | Downloads"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:20
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:15
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:15
+msgid "Bulk Actions"
+msgstr "Massehandling"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:21
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:16
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:16
+msgid "Delete"
+msgstr "Slet"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:24
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:19
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:19
+msgid "Apply"
+msgstr "Anvend"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:28
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:23
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:23
+msgid "Filter"
+msgstr "Filtrér"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:46
+msgid "Downloaded At"
+msgstr "Downloadet den"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:48
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:42
+msgid "File"
+msgstr "Fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:50
+msgid "IP"
+msgstr "IP"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:51
+msgid "User"
+msgstr "Bruger"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:52
+msgid "Referrer"
+msgstr "Referrer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:78
+msgid "No files have been downloaded!"
+msgstr "Ingen filer er blevet downloadet!"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:83
+msgid "Clear all downloads"
+msgstr "Fjern alle downloads"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/downloads.php:87
+msgid "Clear Downloads"
+msgstr "Fjern downloads"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:26
+msgid "Show file template"
+msgstr "Vis fil-skabelon"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:27
+msgid "Show file URL"
+msgstr "Vis fil-URL"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:28
+msgid "Show file version"
+msgstr "Vis fil-version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:29
+msgid "Show file SVN"
+msgstr "Vis fil-SVN (Subversion)"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:30
+msgid "Show file hits"
+msgstr "Vis fil-hits"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/editor.php:33
+msgid "Add Drain Hole tag"
+msgstr "Tilføj Ventil-tag"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:3
+msgid "Drain Hole | Files for"
+msgstr "Ventil | Filer i"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:7
+msgid "Files are stored in"
+msgstr "Filer er gemt i"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:41
+msgid "ID"
+msgstr "ID"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:43
+msgid "Version"
+msgstr "Version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:44
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:18
+msgid "Hits"
+msgstr "Hits"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:45
+msgid "Updated"
+msgstr "Opdateret"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:68
+msgid "Add A File"
+msgstr "Tilføj en fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:70
+msgid "New files can be added by uploading here (if the directory has appropriate write-permissions), or by uploading with an FTP client and 'scanning' the directory for changes."
+msgstr "Nye filer kan tilføjes ved at uploade her (hvis mappen har de nødvendige skrivetilladelser), eller ved at uploade med et FTP-program og 'skanne' mappen for ændringer."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:76
+msgid "New filename"
+msgstr "Nyt filnavn"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:77
+msgid "Optional, uploaded filename will be used if not given"
+msgstr "Valgfrit. Navnet på den uploadede fil anvendes, hvis feltet er tomt."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:82
+msgid "Upload a file"
+msgstr "Upload en fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:92
+msgid "Create &amp; Upload"
+msgstr "Opret &amp; upload"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files.php:93
+msgid "Re-scan"
+msgstr "Skan igen"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:6
+msgid "Filename"
+msgstr "Filnavn"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:10
+msgid "Name"
+msgstr "Navn"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:14
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:22
+msgid "SVN"
+msgstr "SVN"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:26
+msgid "Download As"
+msgstr "Download som"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:30
+msgid "Icon"
+msgstr "Ikon"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:33
+msgid "Default"
+msgstr "Standard"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:39
+msgid "MIME Type"
+msgstr "MIME-type"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:42
+msgid "Auto-detect"
+msgstr "Find automatisk"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:51
+msgid "Options"
+msgstr "Indstillinger"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:54
+msgid "Force download"
+msgstr "Gennemtving download"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:57
+msgid "Force access level"
+msgstr "Gennemtving adgangsniveau"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_edit.php:64
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:43
+msgid "Cancel"
+msgstr "Annullér"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_item.php:7
+msgid "Edit File"
+msgstr "Redigér fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_item.php:14
+msgid "File is missing"
+msgstr "Fil findes ikke"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_item.php:17
+msgid "New version"
+msgstr "Ny version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_item.php:17
+#, fuzzy
+msgid "Branch"
+msgstr "Opdel"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/files_item.php:20
+msgid "View Charts"
+msgstr "Vis diagram"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/head.php:6
+msgid "Are you sure you want to delete this Drain Hole and all files?"
+msgstr "Er du sikker på, du vil slette dette Ventil-Hul og alle dens filer?"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/head.php:7
+msgid "Are you sure you want to delete this version?"
+msgstr "Er du sikker på, du vil slette denne version?"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/head.php:8
+msgid "Are you sure you want to delete this file?"
+msgstr "Er du sikker på, du vil slette denne fil?"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/head.php:9
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:3
+msgid "Drain Hole | Holes"
+msgstr "Ventil | Huller"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:66
+msgid "New Drain Hole"
+msgstr "Nyt Ventil-Hul"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:68
+msgid "A drain hole maps a URL path to a directory on your server.  Files placed within the directory are available under your chosen URL path."
+msgstr "Et Ventil-Hul kobler en ULR-sti til en mappe på din server. De filer, der er placeret i mappen, er tilgængelige via den URL-sti, du har valgt."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:74
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:5
+msgid "URL"
+msgstr "URL"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:78
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:95
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:9
+msgid "Directory"
+msgstr "Mappe"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:78
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:9
+msgid "Relative to root"
+msgstr "Relativ ift. roden"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:85
+msgid "Create Drain Hole"
+msgstr "Opret Ventil-Hul"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:102
+msgid "<p>Your chosen <strong>directory</strong> is within a publicly accessible web directory.  Drain Hole <strong>will not be able to control access</strong> to files placed here unless a <code>.htaccess</code> file is placed in the directory.  Drain Hole will attempt to do this for you, but may not have permission to do so.  If this is the case then you will need to create this file yourself (<a href=\"#\" onclick=\"jQuery('#htaccess').toggle (); return false\">click to view</a>)</p>"
+msgstr "<p>Den <strong>mappe</strong>, du har valgt, er i en mappe, der er offentlig adgang til.  Ventil <strong>vil ikke kunne kontrollere adgangen</strong> til filer placeret her, med mindre en <code>.htaccess</code>-fil er placeret i mappen.  Ventil vil forsøge at gøre det for dig, men har måske ikke tilladelse til det.  Er dette tilfældet, bliver du nødt til selv at oprette filen (<a href=\"#\" onclick=\"jQuery('#htaccess').toggle (); return false\">Klik her for at se hvordan</a>)</p>"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:107
+msgid "<p>Your chosen <strong>URL</strong> is outside of your WordPress site and as such Drain Hole <strong>may not be able to control access</strong> to files unless a <code>.htaccess</code> file is placed in the directory.  Drain Hole will attempt to do this for you, but may not have permission to do so.  If this is the case then you will need to create this file yourself (<a href=\"#\" onclick=\"jQuery('#htaccess').toggle (); return false\">click to view</a>)</p>"
+msgstr "<p>Den <strong>URL</strong>, du har valgt, er ikke på denne WordPress-installation.  Derfor <strong>vil Ventil ikke kunne kontrollere adgangen</strong> til disse filer, med mindre en <code>.htaccess</code>-fil er placeret i mappen.  Ventil vil forsøge at gøre det for dig, men har måske ikke tilladelse til det.  Er dette tilfældet, bliver du nødt til selv at oprette filen (<a href=\"#\" onclick=\"jQuery('#htaccess').toggle (); return false\">Klik her for at se hvordan</a>)</p>"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/holes.php:111
+msgid "The following should be created in the directory given above:"
+msgstr "Det følgende skal oprettes i mappen anført ovenfor:"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:5
+msgid "Relative to site root"
+msgstr "Relativ ift. webstedets rod"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:13
+msgid "Access Level"
+msgstr "Adgangsniveau"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:13
+msgid "File security"
+msgstr "Filsikkerhed"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:16
+msgid "Anybody - no login required"
+msgstr "Alle - logon kræves ikke"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:18
+msgid "Purchased - via WP Shopper"
+msgstr "Købt - via WP Shopper"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:29
+msgid "Access error URL"
+msgstr "URL-adgangsfejl"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:29
+msgid "Redirect on access error"
+msgstr "Fejl i forsøg på at redirigere ved adgang"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_edit.php:35
+msgid "Stop hot-links"
+msgstr "Stop hot-links"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:7
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:20
+msgid "View files"
+msgstr "Se filer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:10
+#, php-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] "%d fil"
+msgstr[1] "%d filer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:16
+msgid "Edit Drain Hole"
+msgstr "Redigér Ventil-Hul"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:16
+msgid "Edit Hole"
+msgstr "Redigér Hul"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:20
+msgid "View Files"
+msgstr "Se filer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_item.php:24
+msgid "View Chart"
+msgstr "Se diagram"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/hole_new.php:23
+msgid "on access error redirect to URL"
+msgstr "Fejl i adgang ved redirigering til URL "
+
+#: d:\wordpress\plugins\drain-hole/view/admin/kitten.php:2
+msgid "You can help support the author by sending a donation.  Every file that is downloaded without support will cause a <strong>kitten to cry</strong>."
+msgstr "Du kan støtte udvikleren ved at sende penge. Hver enkel fil, som downloades, uden udvikleren er støttet, får en <strong>killing til at skrige</strong>."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/kitten.php:3
+msgid "All it takes is <strong>$16 to keep the kittens happy</strong> and act as an incentive for me to carry on writing other free software."
+msgstr "Det koster kun <strong>16 dollars at gøre killingerne glade</strong>. Det stimulerer mig også til fortsat at skrive gratis software."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/kitten.php:27
+msgid "Your help stopping kittens from crying is appreciated!"
+msgstr "Dit bidrag til at standse kattekillingernes skrigen er modtaget med tak!"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/kitten.php:29
+msgid "If you 'mistakenly' said you supported the author without actually doing so then not only are the kittens still crying, but their stomachs ache and they all feel miserable."
+msgstr "Hvis du ved en 'fejl' angav, at du støtter udvikleren, selv om du faktisk ikke har gjort det, så vil kattekillingernes skrigen fortsætte, de har mavepine, og de føler sig alle rigtig skidt tilpas."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/loading.php:4
+msgid "Please wait, loading..."
+msgstr "Indlæser; vent venligst ..."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:9
+msgid "Current version"
+msgstr "Aktuel version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:17
+msgid "Version history"
+msgstr "Versionshistorik"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:24
+msgid "SVN Update"
+msgstr "SVN-opdatering"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:27
+msgid "Update the download from SVN (using version info if applicable)"
+msgstr "Opdatér downloadet fra SVN (brug versionsinfo, hvis det er relevant)"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:31
+#, fuzzy
+msgid "Don't branch"
+msgstr "Opdel ikke"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:34
+msgid "Just update current version"
+msgstr "Opdatér kun aktuel version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:39
+msgid "Keep previous"
+msgstr "Behold forrige"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/new_version.php:42
+msgid "Selecting this will retain the previous version"
+msgstr "Vælges dette, beholdes den forrige version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:2
+msgid "Drain Hole | Options"
+msgstr "Ventil | Indstillinger"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:11
+msgid "Statistic retention"
+msgstr "Bevarelse af statistik"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:12
+msgid "How many days to keep access statistics for"
+msgstr "Hvor mange dage adgangsstatistik skal gemmes"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:14
+msgid "Enter 0 for no limit.  File hits are not cleared"
+msgstr "Indtast 0 for ubegrænset. Fil-hits nulstilles ikke"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:18
+msgid "SVN path"
+msgstr "SVN-sti"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:24
+msgid "Issue tracker URL"
+msgstr "URL til problemdatabase"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:30
+msgid "Default version no."
+msgstr "Standardværdi for versionsnummer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:36
+msgid "Default file name"
+msgstr "Standardværdi for filnavn"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:39
+msgid "<code>$FILENAME$</code> and <code>$EXTENSION$</code> will be replaced by the file's real name and extension"
+msgstr "<br /><code>$FILENAME$</code> og <code>$EXTENSION$</code> erstattes med filens rigtige navn og filtype"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:43
+msgid "Google Analytics tracking"
+msgstr "Google Analytics-sporing"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:44
+msgid "Add code to track downloads"
+msgstr "Tilføj kode for sporing af downloads"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:48
+msgid "Allow file deletion"
+msgstr "Tillad sletning af fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:51
+msgid "Enabling this will allow Drain Hole to delete physical files"
+msgstr "Aktivering heraf vil give Ventil lov til at slette (fysiske) filer"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:55
+msgid "Create .htaccess in holes"
+msgstr "Opret .htaccess i Huller"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:58
+msgid "Enabling this will allow Drain Hole to create .htaccess in holes for further protection"
+msgstr "Aktivering heraf vil give Ventil lov til at oprette .htaccess i Huller for yderligere beskyttelse"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:62
+msgid "Kitten protection"
+msgstr "Beskyttelse af kattekillinger"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:65
+msgid "I hereby testify that I have supported this plugin.  If I check this option and haven't supported this plugin then a squad of winged monkeys will be sent to drop things on my head."
+msgstr "Jeg bekræfter hermed, at jeg har støttet dette plugin. Hvis jeg markerer denne indstilling og ikke har støttet pluginnet, vil et hold vingede aber blive sendt for at droppe ting på mit hoved."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:70
+msgid "Save options"
+msgstr "Gem indstillinger"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:78
+msgid "Delete Drain Hole"
+msgstr "Slet Ventil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/options.php:80
+msgid "This operation removes all data associated with Drain Hole and disables the plugin.  It does not delete any files"
+msgstr "Udførelsen heraf vil fjerne alle data, der hører sammen med Ventil, og deaktiverer pluginnet. Der slettes ingen filer."
+
+#: d:\wordpress\plugins\drain-hole/view/admin/pager.php:15
+#: d:\wordpress\plugins\drain-hole/view/admin/pager.php:17
+msgid "Search"
+msgstr "Søg"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:15
+msgid "Download At"
+msgstr "Download den"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:17
+msgid "Speed"
+msgstr "Hastighed"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:18
+msgid "Time Taken"
+msgstr "Forløbet tid"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:44
+msgid "Cancelled"
+msgstr "Annulleret"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:55
+msgid "There are no statistics for this file!"
+msgstr "Der er ingen statistik for denne fil!"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:60
+msgid "Clear Statistics For This File"
+msgstr "Slet statistik for denne fil"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/stats.php:64
+msgid "Clear Statisitics"
+msgstr "Slet statistik"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/submenu.php:3
+msgid "Files &amp; Holes"
+msgstr "Filer &amp; Huller"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/submenu.php:4
+msgid "Downloads"
+msgstr "Downloads"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/time_days.php:1
+msgid "Day"
+msgstr "Dag"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/time_months.php:1
+msgid "Month"
+msgstr "Måned"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/time_years.php:1
+msgid "Year"
+msgstr "År"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/version.php:2
+msgid "Drain Hole News"
+msgstr "Ventil-nyheder"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "for %s siden"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:2
+#, php-format
+msgid "Version history for %s"
+msgstr "Versionshistorik for %s"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:40
+msgid "Created"
+msgstr "Oprettet"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:41
+msgid "Reason for version"
+msgstr "Grund til version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:56
+msgid "There are no versions to display!"
+msgstr "Der er ingen versioner, der kan vises!"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:65
+msgid "Add to history"
+msgstr "Tilføj til historik"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:66
+msgid "You can add to the history of a file.  This allows you to include some history of a file before Drain Hole was used"
+msgstr "Du kan tilføje til en fils historik. Det lader dig medtage historik fra før, Ventil blev brugt"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:77
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_edit.php:21
+msgid "Reason"
+msgstr "Grund"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:81
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_edit.php:13
+msgid "Date"
+msgstr "Dato"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions.php:85
+msgid "(D/M/Y)"
+msgstr "(D/M/Y)"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_item.php:14
+msgid "Yes"
+msgstr "Ja"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_item.php:16
+msgid "No"
+msgstr "Nej"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_item.php:20
+msgid "Edit version"
+msgstr "Redigér version"
+
+#: d:\wordpress\plugins\drain-hole/view/admin/versions_item.php:20
+msgid "Edit"
+msgstr "Redigér"
+
+#: d:\wordpress\plugins\drain-hole/view/drain-hole/default_show.php:6
+msgid "Download"
+msgstr "Download"
+
+#: d:\wordpress\plugins\drain-hole/view/drain-hole/default_show.php:18
+msgid "Size"
+msgstr "Størrelse"
+
+#: d:\wordpress\plugins\drain-hole/view/drain-hole/default_show.php:25
+msgid "<br/><small>Powered by <a href=\"http://urbangiraffe.com/plugins/drain-hole/\">Drain Hole</a></small>"
+msgstr "<br/><small>Leveret af <a href=\"http://urbangiraffe.com/plugins/drain-hole/\">Ventil (Drain Hole)</a></small>"
+

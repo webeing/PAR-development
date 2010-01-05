@@ -1,0 +1,78 @@
+*** Open Air Changelog ***
+
+2009.08.06 - version 2.0.0
+  * /functions/ - New WooThemes Framework (V1.0.4) (core theme functions)
+     functions.php
+  * includes/theme-comments.php - Moved from /functions/
+     includes/theme-functions.php
+     includes/theme-js.php
+     includes/theme-options.php
+     includes/theme-widgets.php
+     includes/sidebar-init.php
+  * includes/theme-options.php - Added new general & dynamic images options
+  * archive.php - Fixed checkbox options ( $var == 'true' instead of just $var ) & woo_get_image tweaks
+    single.php
+    index.php
+    search.php
+    imagegallery.php
+
+2009.06.11 - version 1.4.9.1
+ * functions.php - Upgrade (get_category fix)
+ 
+2009.04.21 - version 1.2.2
+* style.css - Added top page menu dropdown
+  header.php - Changed depth=1 to depth=3
+  includes/js/suckerfish.js - IE6 fix for dropdown
+
+2009.02.24 - version 1.2.1
+	* layouts/default.php - Option to exclude normal posts from category listing
+	  functions.php - Added option to exclude
+
+2009.01.05 - version 1.2
+  * comments.php - WP 2.7 Threaded comments
+    comments-legacy.php
+	functions.php
+	style.css (new sections: THREADED COMMENTS / MISC)
+
+2008.11.19 - version 1.1.4
+  * layouts/default.php - Fixed image resizer size settings
+    functions.php
+    includes/featured.php
+
+2008.11.13 - version 1.1.3
+  * layouts/blog.php - Fixed php endif bug
+  
+2008.11.04 - version 1.1.2
+  * footer.php - added "missing" google analytics hook
+  * style.css - removed list-divider.gif
+  * styles/*.css - Fixed list-divider.gif
+  * styles/default.css - Added list-divider.gif  
+
+2008.10.26 - version 1.1.1
+  * layouts/blog.php - Excluded featured post
+
+2008.10.22 - version 1.1.0
+  * thumb.php - new version
+
+2008.10.13 - version 1.0.5
+  * archive.php - Added next/prev navigation. Image links to post.
+  * search.php - Added next/prev navigation. Image links to post.
+
+2008.10.09 - version 1.0.4
+  * functions/custom.php - Fixed bug with update of custom fields
+
+2008.10.08 - Version 1.0.3
+  * layouts/default.php - Fixed image resizer setting on thumbnails
+
+2008.10.07 - Version 1.0.2
+  * footer.php - Made year dynamic
+  * includes/custom.php - Changed text
+
+2008.10.06 - Version 1.0.1
+  * includes/featured.php - Exclude variable
+  * layouts/default.php - Excluded featured post
+  * layouts/default.php - Image links to post
+  * comments.php - Typo fix 'responces'
+
+2008.10.01 - Version 1.0.0
+ * First release!

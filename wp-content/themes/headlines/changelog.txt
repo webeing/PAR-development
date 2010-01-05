@@ -1,0 +1,23 @@
+*** Headlines Changelog ***
+
+2009.11.06 - version 1.0.5
+ * includes/featured.php - changed parameters on woo_get_image function
+
+2009.11.05 - version 1.0.4
+ * header.php - fixed page nav not showing (line 113) and exclude category (line 118)
+ * single.php - fixed content ad not showing in single post (line 14)
+
+2009.11.05 - version 1.0.3
+ * includes/theme-options.php - Added option to move page nav to the top
+   includes/page-nav.php - New file for page navigation code
+   header.php - include of includes/page-nav.php in two places, replacing old page navigation code  
+
+2009.11.05 - version 1.0.2
+ * includes/theme-options.php - Added featured slider options
+ * header.php - added featured slider options (line 46-64)
+
+2009.11.05 - version 1.0.1
+ * page.php - removed breadcrumb function call
+	
+2009.11.05 - version 1.0
+ * First release!

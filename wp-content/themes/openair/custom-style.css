@@ -1,0 +1,140 @@
+/*  
+Theme Name: PAR
+Theme URI: http://www.webeing.net/
+Description: Style theme PAR
+Author: Webeing
+Author URI: http://www.webeing.net/
+Tags: wordpress-mu, par, webeing
+*/
+
+
+body{
+}
+
+/*  - LAST CHILDREN STYLE
+/* ----------------------------------------------*/
+
+#last-child-container{
+	font-family:Arial,Helvetica,sans-serif;
+	width:730px;
+	margin-left:-15px;
+}
+.last-child-thumb{
+	width:207px;
+	height:76px;
+	overflow:hidden;
+}
+
+.last-child-thumb img{
+	width:207px;
+}
+
+.box .entry{}
+
+#last-child-container .box h3{
+	font-size:1.75em;
+}
+
+#last-child-container .box h3 a{
+	color:#748A9C;
+	text-decoration:none;
+}
+
+#last-child-container .box h3 a:hover{
+	color:#2F4F73;
+	text-decoration:underline;
+}
+
+/*  - SOCIAL ACCOUNT STYLE
+/* ----------------------------------------------*/
+
+#social-account{
+	background-color:
+}
+
+#social-account ul.account{
+	list-style:none;
+}
+
+#social-account ul.account li{
+	float:left;
+}
+
+/*  - LOGO CHILD CAROUSEL STYLE
+/* ----------------------------------------------*/
+
+.infiniteCarousel {
+  width: 960px;
+  position:relative;
+}
+
+.infiniteCarousel .wrapper {
+  width: 850px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
+  overflow: auto;
+  min-height: 10em;
+  margin: 0 40px;
+}
+
+.infiniteCarousel ul a img {
+  border: 5px solid #000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.infiniteCarousel .wrapper ul {
+  width: 9999px;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+.infiniteCarousel ul li {
+  display:block;
+  float:left;
+  padding: 10px;
+  height: 85px;
+  width: 85px;
+}
+
+.infiniteCarousel ul li a img {
+  display:block;
+}
+
+.infiniteCarousel .arrow {
+  display: block;
+  height: 36px;
+  width: 37px;
+  background: url(images/arrow.png) no-repeat 0 0;
+  text-indent: -999px;
+  position: absolute;
+  top: 65px;
+  cursor: pointer;
+}
+
+.infiniteCarousel .forward {
+  background-position: 0 0;
+  right: 0;
+}
+
+.infiniteCarousel .back {
+  background-position: 0 -72px;
+  left: 0;
+}
+
+.infiniteCarousel .forward:hover {
+  background-position: 0 -36px;
+}
+
+.infiniteCarousel .back:hover {
+  background-position: 0 -108px;
+}
+
+
+
+/*  - GENERIC CLASS STYLE
+/* ----------------------------------------------*/
+.box{
+	width:213px;
+}

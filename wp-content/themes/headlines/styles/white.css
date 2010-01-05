@@ -1,0 +1,7 @@
+a:link, a:visited  { color: #c73d1a; }
+body  { background-color: #f2f2f2; }
+#top { background:#f9f9f9 url(white/bg.jpg) no-repeat top center; }
+#nav li ul li  { background: #7d7d7d; }
+.entry a.btn, input.submit, #commentform #submit { background-color:#6694ac; border:1px solid #557c90; }
+.post #share .banner { background:url(white/banner-share.png) no-repeat; }
+.featured-banner { background:url(white/banner-featured.png) no-repeat; }

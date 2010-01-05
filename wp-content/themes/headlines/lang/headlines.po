@@ -1,0 +1,413 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: headlines/single.php:24
+#: headlines/search.php:19
+#: headlines/index.php:23
+#: headlines/includes/featured.php:50
+#: headlines/archive.php:44
+msgid "% Comments"
+msgstr ""
+
+#. Text in function
+#: headlines/comments.php:19
+msgid "% Responses"
+msgstr ""
+
+#. Text in function
+#: headlines/single.php:24
+#: headlines/search.php:19
+#: headlines/index.php:23
+#: headlines/includes/featured.php:50
+#: headlines/archive.php:44
+msgid "0 Comments"
+msgstr ""
+
+#. Text in function
+#: headlines/single.php:24
+#: headlines/search.php:19
+#: headlines/index.php:23
+#: headlines/includes/featured.php:50
+#: headlines/archive.php:44
+msgid "1 Comment"
+msgstr ""
+
+#. Text in echo
+#: headlines/footer.php:21
+msgid "All Rights Reserved."
+msgstr ""
+
+#. Text in echo
+#: headlines/archive.php:9
+#: headlines/archive.php:12
+#: headlines/archive.php:15
+#: headlines/archive.php:18
+#: headlines/header.php:11
+#: headlines/header.php:12
+msgid "Archive"
+msgstr ""
+
+#. Text in echo
+#: headlines/archive.php:21
+msgid "Archive by Author"
+msgstr ""
+
+#. Text in echo
+#: headlines/header.php:8
+msgid "Author Archives"
+msgstr ""
+
+#. Text in function
+#: headlines/includes/theme-widgets.php:210
+msgid "Author Info"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-archives.php:28
+#: headlines/template-sitemap.php:24
+msgid "Categories"
+msgstr ""
+
+#. Text in echo
+#: headlines/sidebar.php:13
+#: headlines/template-sitemap.php:45
+msgid "Comments"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:37
+msgid "Comments For This Post"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:117
+#: headlines/comments.php:53
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in echo
+#: headlines/footer.php:25
+msgid "Designed by"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/theme-comments.php:29
+msgid "Direct link to this comment"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/page-nav.php:11
+msgid "Email"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:92
+msgid "Email (required)"
+msgstr ""
+
+#. Text in echo
+#: headlines/search-form.php:6
+#: headlines/header.php:132
+msgid "Enter keywords..."
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/featured.php:4
+msgid "Featured"
+msgstr ""
+
+#. Text in echo
+#: headlines/header.php:101
+msgid "Follow on Twitter"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/page-nav.php:4
+msgid "Home"
+msgstr ""
+
+#. Text in echo
+#: headlines/sidebar.php:12
+msgid "Latest"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:126
+#: headlines/comments.php:65
+msgid "Leave a Reply"
+msgstr ""
+
+#. Text in function
+#: headlines/comments.php:65
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:136
+#: headlines/comments.php:83
+msgid "Log out of this account"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:136
+#: headlines/comments.php:83
+msgid "Logged in as"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:136
+#: headlines/comments.php:83
+msgid "Logout"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:144
+msgid "Mail (will not be published)"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-archives.php:34
+msgid "Monthly Archives"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:141
+msgid "Name"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:88
+msgid "Name (required)"
+msgstr ""
+
+#. Text in function
+#: headlines/search.php:44
+#: headlines/index.php:54
+#: headlines/archive.php:75
+msgid "Newer Entries"
+msgstr ""
+
+#. Text in function
+#: headlines/comments.php:19
+msgid "No Responses"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:49
+msgid "No comments yet... Be the first to leave a reply!"
+msgstr ""
+
+#. Text in function
+#: headlines/search.php:45
+#: headlines/index.php:55
+#: headlines/archive.php:76
+msgid "Older Entries"
+msgstr ""
+
+#. Text in function
+#: headlines/comments.php:19
+msgid "One Response"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-sitemap.php:18
+msgid "Pages"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/latest.php:8
+msgid "Permalink to "
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/theme-widgets.php:63
+msgid "Photos on <span>Flick<span>r</span></span>"
+msgstr ""
+
+#. Text in echo
+#: headlines/sidebar.php:11
+msgid "Popular"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/page-nav.php:9
+msgid "Posts"
+msgstr ""
+
+#. Text in echo
+#: headlines/footer.php:25
+msgid "Powered by"
+msgstr ""
+
+#. Text in echo
+#: headlines/index.php:30
+#: headlines/includes/featured.php:54
+#: headlines/archive.php:51
+msgid "Read more"
+msgstr ""
+
+#. Text in function
+#: headlines/index.php:28
+#: headlines/archive.php:49
+msgid "Read more..."
+msgstr ""
+
+#. Text in echo
+#: headlines/search-form.php:3
+#: headlines/search-form.php:7
+msgid "Search"
+msgstr ""
+
+#. Text in echo
+#: headlines/header.php:7
+msgid "Search Results"
+msgstr ""
+
+#. Text in echo
+#: headlines/search.php:8
+msgid "Search results"
+msgstr ""
+
+#. Text in echo
+#: headlines/single.php:35
+msgid "Share"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-fullwidth.php:29
+#: headlines/single.php:61
+#: headlines/search.php:37
+#: headlines/index.php:47
+#: headlines/404.php:19
+#: headlines/page.php:29
+#: headlines/archive.php:68
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:155
+#: headlines/comments.php:109
+msgid "Submit Comment"
+msgstr ""
+
+#. Text in echo
+#: headlines/header.php:13
+msgid "Tag Archive"
+msgstr ""
+
+#. Text in echo
+#: headlines/archive.php:24
+msgid "Tag Archives:"
+msgstr ""
+
+#. Text in echo
+#: headlines/sidebar.php:14
+msgid "Tags"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-archives.php:18
+msgid "The Last 30 Posts"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:9
+#: headlines/comments.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/theme-widgets.php:17
+msgid "This post was written by"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:79
+msgid "Trackbacks For This Post"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:35
+msgid "Trackbacks/Pingbacks"
+msgstr ""
+
+#. Text in echo
+#: headlines/header.php:101
+msgid "Twitter"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:147
+msgid "Website"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:77
+#: headlines/comments.php:96
+msgid "Website (optional)"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:105
+msgid "You can use these tags"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:129
+#: headlines/comments.php:73
+msgid "You must be"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:57
+#: headlines/comments-legacy.php:89
+#: headlines/includes/theme-comments.php:40
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:61
+#: headlines/comments-legacy.php:93
+#: headlines/includes/theme-comments.php:29
+msgid "at"
+msgstr ""
+
+#. Text in echo
+#: headlines/template-archives.php:24
+msgid "comments"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:129
+#: headlines/comments.php:73
+msgid "logged in"
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/comments.php:29
+msgid "on "
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/theme-widgets.php:17
+msgid "posts on"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments.php:19
+msgid "to"
+msgstr ""
+
+#. Text in echo
+#: headlines/comments-legacy.php:129
+#: headlines/comments.php:73
+msgid "to post a comment."
+msgstr ""
+
+#. Text in echo
+#: headlines/includes/theme-widgets.php:17
+msgid "who has written"
+msgstr ""

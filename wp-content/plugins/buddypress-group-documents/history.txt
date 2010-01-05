@@ -1,0 +1,29 @@
+Version 0.2.1 (December 28, 2009)
+------------------------------------------------------------
+- Corrected a few l18n domains that were incorrect
+- Included a default pot file in /languages
+- Added some additional strings for translation
+
+Version 0.2.0 (December 28, 2009)
+- Added email notifications for document uploads
+- Added option to display the filesize
+- added a stripslashes() call to file names that are used when the name field is blank
+- Refactored display code to use a template class instead of a global $view variable
+- Added paging for list of documents w/ admin option
+
+Version 0.1.3 (December 24, 2009)
+------------------------------------------------------------
+- Added a priority to the menu display function to fix a bug in WPMU 2.9
+- Removed redundant "bp-group-documents" from the file names
+
+Version 0.1.2 (December 21, 2009
+-------------------------------------------------------------
+- Fixed a bug where the file extensions were loosing the "." (I had the regex file filter set too tight)
+
+Version 0.1.1 (December 21, 2009
+--------------------------------------------------------------
+- fixed folder name inconsistancies (bp-group-documents vs buddypress-group-documents)
+
+Version 0.1 ( December 20th 2009 )
+--------------------------------------------------------------
+- Initial Release.
