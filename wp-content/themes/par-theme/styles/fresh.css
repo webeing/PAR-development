@@ -1,0 +1,194 @@
+#pages-top {
+	background:#EBE9E1 url(fresh/pages-top.gif) repeat-x bottom center;
+	border-bottom:1px solid #333333;
+}
+
+#header {
+	background:#e1ebef url(fresh/header.gif) repeat-x bottom center;
+}
+
+.search-form {
+	background:url(fresh/search-bar.gif) repeat-x top center;
+	border-left: solid 1px #666666;
+}
+
+.search-box {
+	color:#666666;
+}
+
+#logo-back {
+	background:url(fresh/logo-back.gif) no-repeat bottom left;
+}
+
+#categories {
+	background:#dddddd url(fresh/categories.gif) repeat-x top center;
+	border-top:1px solid #cccccc;
+}
+
+#featured {
+	background:#7b7b7b url(fresh/featured.gif) repeat-x top center;
+	border-bottom:1px solid #333333;
+}
+
+.featured-norm {
+	margin:0; padding:0;
+	width:auto; height:auto;
+	background:url(fresh/featured-norm.gif) no-repeat top center;
+	line-height:20px;
+}
+
+.featured-blog {
+	margin:0; padding:0;
+	width:auto; height:auto;
+	background:url(fresh/featured-blog.gif) no-repeat top center;
+	line-height:20px;
+}
+
+.featured-small {
+	margin:0; padding:0;
+	width:auto; height:103px;
+	background:url(fresh/featured-small.gif) no-repeat top center;
+}
+
+#content {
+	background-color:#ebe9e1;
+	border-top:6px solid #DEDBD1;
+	border-bottom:1px solid #e6e6e6;
+}
+
+	.comment-meta, .post-content {
+		border-left:1px solid #DEDBD1;
+	}
+
+.post-list-last {
+	border-bottom:1px solid #dddddd;
+}
+
+.post-list li.post-last, .post-list-last li.post-last, .post-list li.post-last-blank {
+	border-bottom:1px solid #dddddd;
+}
+
+.post-list li.post, .post-list li.post-last, .post-list-last li.post, .post-list-last li.post-last, .post-list li.post-last-blank, .commentlist li {
+	background:url(fresh/postback.gif) repeat-y;
+}
+
+.post-list li.post-blank, .post-list-last li.post-blank, .post-list li.post, .post-list li.post-last, .post-list-last li.post, .post-list-last li.post-last, .post-list li.post-last-blank, .post-list li.other-post-last, .post-list-last li.other-post-last, .post-list li.archives, .post-list-last li.archives, .post-list li.other-post, .post-list-last li.other-post {
+	border-color:#DEDBD1;
+}
+
+.box {
+	background:#f7fafc url(fresh/box-back.gif) repeat-x top center;
+	border:1px solid #cccccc;
+}	
+
+.meta {
+	background:#fafbfd url(fresh/meta.gif) repeat-x top center;
+	border-left:1px solid #d9e2e9;
+}
+
+.related-posts, .tags-top {
+	border-top:1px solid #dddddd;
+}
+
+.comment-content {
+	border-left:1px solid #e5e9ee;
+}
+
+blockquote {
+	background:#eeeeee;
+	border:1px solid #cccccc;
+}
+
+h3, h3 a:link, h3 a:active, h3 a:visited {
+	color:#222222;
+}
+
+.post-content h1, h1.comments-title, .post-content h2, .post-content h2.title, h2.comments-title, .post-content h3, .post-content h4, .post-content h5 {
+	color:#484a4b;
+}
+
+h4, h4.related-posts, h4.tags {
+	color:#333333;
+}
+
+h5 {
+	color:#666666;
+	border-bottom:3px solid #DEDBD1;
+}
+
+a:link, a:active, a:visited {
+	color: #e18d00;
+}
+
+#subscribe a, .featured-blog-content a, #footer a {
+	color:#E8A02C;
+	text-decoration:underline;
+}
+
+h2.featured a:link, h2.featured a:active, h2.featured a:visited, a.twitter:link, a.twitter:active, a.twitter:visited, a.email:link, a.email:active, a.email:visited, a.rss-big:link, a.rss-big:active, a.rss-big:visited, .featured-norm, .featured-blog, h2.featured {
+	color:#eeeeee;
+}
+
+#pages-list li a, a.rss:link, a.rss:active, a.rss:visited, #pages-top {
+	color: #A0A09B;
+}
+
+#pages-list li a:hover {
+	color: #E8A02C;
+}
+
+.meta {
+	color:#676d72;
+}
+
+#footer, a.woothemes-link:link, a.woothemes-link:active, a.woothemes-link:visited {
+	color:#a7a1a1;
+}
+
+.textfield {
+	color:#b2b5b6;
+}
+
+#category-list li.current-cat, #category-list li:hover {
+	background:#f1f0eb;
+}
+
+#category-list li a {
+	color:#333333;
+}
+
+#category-list li.active a, #category-list li a:hover {
+	color:#333333;
+}
+
+.related-posts-list li a:hover, .meta a:hover {
+	color:#2f5074;
+}
+
+.gray, .gray a, h2.gray a {
+	color:#363731;
+}
+
+.lightgray, .lightgray a {
+	color:#999999;
+}
+
+.orange, caption {
+	color:#e18d00;
+}
+
+.grayblue, .grayblue a, .related_posts li a, .meta a {
+	color:#333333;
+}
+
+.freshblue, .freshblue a {
+	color:#112842;
+}
+
+.freshgray, .freshgray a, th {
+	color:#3a3c3e;
+}
+
+#sidebar a, #sidebar {
+	color:#666666;
+}
