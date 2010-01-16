@@ -26,7 +26,7 @@ define('DB_NAME', 'par_db');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'c0gn1t10n.');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -38,17 +38,15 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 define('VHOST', 'no'); 
 $base = '/par/';
-define('DOMAIN_CURRENT_SITE', 'r20291.ovh.net' );
+define('DOMAIN_CURRENT_SITE', '127.0.0.1' );
 define('PATH_CURRENT_SITE', '/par/' );
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOGID_CURRENT_SITE', '1' );
 
 /*
- * Hide Admin Bar permanently...
- * Enrico Corinti 04.01.2010
+ * Disable Admin Bar forever
  */
-define( 'BP_DISABLE_ADMIN_BAR', true );
-
+define('BP_DISABLE_ADMIN_BAR', true );
 
 /**#@+
  * Authentication Unique Keys.
@@ -59,13 +57,13 @@ define( 'BP_DISABLE_ADMIN_BAR', true );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', '6188eb8dc82d826cdee90206250ea67ae5dc333b592ab0c52526c7c745ae0e20');
-define('SECURE_AUTH_KEY', '28a60c74462e1ed5f05e57fa5f5bb669e83e7d0e3955c2cb6c7a77dbc277c67d');
-define('LOGGED_IN_KEY', '530f3e5f97708e2016f957b77c896d6bcdcacffb047645a1ec1a5038dde2d27f');
-define('NONCE_KEY', 'c9c2bf0d63054341b828e8e7cc52f11869e281c0ac8a36541c22b0c0a9128204');
-define('AUTH_SALT', '15db4d81f77874651acdc6d2cb3f8000c14eb4a092fd2422d488df52e2da0700');
-define('LOGGED_IN_SALT', '65847d5416d62be63fcb0e1f52f1cc41b92c6cb02fcaf94b1c91d5b762ae24e3');
-define('SECURE_AUTH_SALT', '1fa87c9f40fdb714e82b54794f2f68a039f738ffef4cc0bb060f2a2203368a75');
+define('AUTH_KEY', '6d799ac6176d1efa5f567dbfda81eb72c173614166dbcf3a1f8b36ea7f65ad3e');
+define('SECURE_AUTH_KEY', 'b9f2065d93cbe3405c5916a8d2eb3769d35a6cbf84c9ba17464016d4f80ee420');
+define('LOGGED_IN_KEY', 'f13a2ca47d74f55f2c9b2709fb160b8f2cc0f3ff37076277da6e364aca7555c4');
+define('NONCE_KEY', '45b6dfd34410a7251db1c6d21cde0b593e91aa1a314a753e96615076ac1e3ea1');
+define('AUTH_SALT', '5161a73cc2b33da4f70cc11286907729a067e95aaa1a7c28eee048a90c4b26ef');
+define('LOGGED_IN_SALT', 'ae5051afd1b1220c0b1841f61abb4a5c54108f0d2d1260dc8720fd889e994c1f');
+define('SECURE_AUTH_SALT', 'ae7951830b6816beca25e4d63ba00509b9eed964f1c720b2bf3c322b1dd12369');
 /**#@-*/
 
 /**

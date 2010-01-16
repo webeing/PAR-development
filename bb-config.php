@@ -19,7 +19,7 @@ define( 'BBDB_NAME', 'par_db' );
 define( 'BBDB_USER', 'root' );
 
 /** MySQL database password */
-define( 'BBDB_PASSWORD', 'c0gn1t10n.' );
+define( 'BBDB_PASSWORD', 'root' );
 
 /** MySQL hostname */
 define( 'BBDB_HOST', 'localhost' );
@@ -38,10 +38,10 @@ define( 'BBDB_COLLATE', '' );
  *
  * @since 1.0
  */
-define( 'BB_AUTH_KEY', '6188eb8dc82d826cdee90206250ea67ae5dc333b592ab0c52526c7c745ae0e20' );
-define( 'BB_SECURE_AUTH_KEY', '28a60c74462e1ed5f05e57fa5f5bb669e83e7d0e3955c2cb6c7a77dbc277c67d' );
-define( 'BB_LOGGED_IN_KEY', '530f3e5f97708e2016f957b77c896d6bcdcacffb047645a1ec1a5038dde2d27f' );
-define( 'BB_NONCE_KEY', 'c9c2bf0d63054341b828e8e7cc52f11869e281c0ac8a36541c22b0c0a9128204' );
+define( 'BB_AUTH_KEY', '6d799ac6176d1efa5f567dbfda81eb72c173614166dbcf3a1f8b36ea7f65ad3e' );
+define( 'BB_SECURE_AUTH_KEY', 'b9f2065d93cbe3405c5916a8d2eb3769d35a6cbf84c9ba17464016d4f80ee420' );
+define( 'BB_LOGGED_IN_KEY', 'f13a2ca47d74f55f2c9b2709fb160b8f2cc0f3ff37076277da6e364aca7555c4' );
+define( 'BB_NONCE_KEY', '45b6dfd34410a7251db1c6d21cde0b593e91aa1a314a753e96615076ac1e3ea1' );
 /**#@-*/
 
 /**
@@ -65,13 +65,13 @@ define( 'BB_LANG', '' );
 $bb->custom_user_table = "wp_users";
 $bb->custom_user_meta_table = "wp_usermeta";
 
-$bb->uri = "http://r20291.ovh.net/par/wp-content/plugins/buddypress/bp-forums/bbpress/";
+$bb->uri = "http://127.0.0.1/par/wp-content/plugins/buddypress/bp-forums/bbpress/";
 $bb->name = " Forums";
 $bb->wordpress_mu_primary_blog_id = 1;
 
-define('BB_AUTH_SALT', "15db4d81f77874651acdc6d2cb3f8000c14eb4a092fd2422d488df52e2da0700");
-define('BB_LOGGED_IN_SALT', "65847d5416d62be63fcb0e1f52f1cc41b92c6cb02fcaf94b1c91d5b762ae24e3");
-define('BB_SECURE_AUTH_SALT', "1fa87c9f40fdb714e82b54794f2f68a039f738ffef4cc0bb060f2a2203368a75");
+define('BB_AUTH_SALT', "5161a73cc2b33da4f70cc11286907729a067e95aaa1a7c28eee048a90c4b26ef");
+define('BB_LOGGED_IN_SALT', "ae5051afd1b1220c0b1841f61abb4a5c54108f0d2d1260dc8720fd889e994c1f");
+define('BB_SECURE_AUTH_SALT', "ae7951830b6816beca25e4d63ba00509b9eed964f1c720b2bf3c322b1dd12369");
 
 define('WP_AUTH_COOKIE_VERSION', 2);
 

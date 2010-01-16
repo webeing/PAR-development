@@ -374,14 +374,18 @@ if( !$active_signup )
 
 $active_signup = apply_filters( 'wpmu_active_signup', $active_signup ); // return "all", "none", "blog" or "user"
 
-if( is_site_admin() )
-	echo '<div class="mu_alert">' . sprintf( __( "Greetings Site Administrator! You are currently allowing '%s' registrations. To change or disable registration go to your <a href='wp-admin/wpmu-options.php'>Options page</a>." ), $active_signup ) . '</div>';
+if( is_site_admin() ) {
+	echo '<div class="mu_alert"><p>' . sprintf( __( "Greetings Site Administrator! You are currently allowing '%s' registrations. To change or disable registration go to your <a href='wp-admin/wpmu-options.php'>Options page</a>." ), $active_signup ) . '</p>';
+	if ( function_exists( 'cfc_stylesheet_html' ) == false && function_exists( 'wphc_option' ) == false )
+		echo '<p>' . __( 'Spam is a huge problem on the Internet. Protect your site by using <a href="http://wordpress-plugins.feifei.us/hashcash/">WP-Hashcash</a>, <a href="http://ocaoimh.ie/cookies-for-comments/">Cookies For Comments</a> or follow <a href="http://www.darcynorman.net/2009/05/20/stopping-spamblog-registration-in-wordpress-multiuser/">this advice</a>. They should help stop or slow down those who create spam blogs on your site.' ) . '</p>';
+	echo '</div>';
+}
 
 $newblogname = isset($_GET['new']) ? strtolower(preg_replace('/^-|-$|[^-a-zA-Z0-9]/', '', $_GET['new'])) : null;
 
 $current_user = wp_get_current_user();
 if( $active_signup == "none" ) {
-	_e( "Registration has been disabled." );
+	echo '<p>' . __( "Registration has been disabled." ) . '</p>';
 } elseif( $active_signup == 'blog' && !is_user_logged_in() ){
 	if( is_ssl() ) {
 		$proto = 'https://';
