@@ -1,6 +1,8 @@
 <?php
 if(is_home()) : ?>
 <div class="container"> 
+<?php var_dump (getAllPostsByCategoryName('Featured',3)); ?>
+
 	<div id="last-child-container" class="left">	
 		<div class="box left">
 			<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Last Article Segment 1</a></h3>

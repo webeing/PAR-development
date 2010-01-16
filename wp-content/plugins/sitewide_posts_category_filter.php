@@ -23,87 +23,127 @@
  ------------------------------------------------------------------------
  */
 
+class SiteWidePostsManager{
+	
+	private $options;
+	private $blogList;
 
-function getAllPostsByCategoryName($catName, $limit, $status='public'){
-	global $post;
-	global $wpdb;
-	global $table_prefix;
+	function __construct($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC")
+	{
+		$this->QueryBlogs($blogExclude, $sitewideLimit, $status, $orderedby, $order);
+	}
 	
-	$post = null;
+	function QueryBlogs($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC"){
+
+		global $post;
+		global $wpdb;
+		global $table_prefix;
+		
+		
+		/*
+		 * Status option evalueted
+		 */
+		switch ($status){ 
+	    	case "public": {
+	    		$this->options = "public = '1' AND archived = '0' AND mature = '0' AND spam = '0' AND deleted ='0' ";
+	    		#echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
+	    		break;
+	    	}
+	    	case "archived" : {
+	    		$this->options = "public = '1' AND archived = '1' AND mature = '0' AND spam = '0' AND deleted ='0' ";
+	    		 #echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
+	    		 break;
+	    	}
+	    }
+	    
+	    /*
+	     * OrderBy option evalueted
+	     */
+	    
+	    $this->options .= " ORDER BY '" . $orderedby. "'";
+	    
+	    /*
+	     * Order option evallueted
+	     */
+	    $this->options .= " " . $order;
+	    
+	    /*
+		 * Limits option evalueted
+		 */
+		($sitewideLimit == 0) ? $sitewideLimit = "" :  $sitewideLimit = "LIMIT 0,". $sitewideLimit;
+     	$this->options .= " " . $sitewideLimit;
+		
+     	/*
+     	 * Query SiteWide Blogs
+     	 */
+     	$this->blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE " . $this->options, ARRAY_A);
+     	
+     	var_dump($this->blog_list);
+     	
+	}
 	
-	$orderedby = 'regitered';
-	
-	if ($limit == 0) $limit = "";
-	else $limit = "LIMIT 0,". $limit;
-	
-    $postFromAllPost = "";
-    
-	switch ($status){ 
-    	case "public": {
-    		$options = "public = '1' AND archived = '0' AND mature = '0' AND spam = '0' AND deleted ='0' ";
-    		#echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
-    		break;
-    	}
-    	case "archived" : {
-    		$options = "public = '1' AND archived = '1' AND mature = '0' AND spam = '0' AND deleted ='0' ";
-    		 #echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
-    		 break;
-    	}
-    }
-    
-    //echo "SELECT blog_id FROM wp_blogs WHERE " . $options;
-    $blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE " . $options . " ORDER BY '" . $orderedby . "' DESC" , ARRAY_A);
-	//$blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs", ARRAY_A);
-    foreach ($blog_list as $ab)
-    {
-        $bid = $ab["blog_id"];
-		//echo $bid . '<br />';
-		//echo $catName . '<br />';
-        if ($bid != 1)
-        {
-            $tempSQL = " SELECT option_value AS blogname, post_title, post_content, post_date_gmt ,guid 
-            FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
-            WHERE post_status = 'publish' 
-            AND post_type = 'post'
-            AND option_name = 'blogname'
-            AND ID IN
-            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
-            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
-            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
-            if (strlen($postFromAllPost) > 0)
-            {
-                $postFromAllPost .= " UNION ".$tempSQL;
-            }
-            else $postFromAllPost .= $tempSQL;
-        }
-        
-        //echo '<b>query :</b> ' . $postFromAllPost . '<br />';
-    }
-    
-    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
-    $postList = $wpdb->get_results($postFromAllPost . $limit , ARRAY_A);
-    return $postList;
+	function getAllPostsByCategoryName($catName, $singleLimit = 1){
+		global $post;
+		global $wpdb;
+		global $table_prefix;
+		
+		$post = null;
+		
+		/*
+		 * Limits option evalueted
+		 */
+		($singleLimit == 0) ? $singleLimit = "" :  $singleLimit = "LIMIT 0,". $singleLimit;
+						
+	    foreach ($this->blog_list as $ab)
+	    {
+	        $bid = $ab["blog_id"];
+			//echo $bid . '<br />';
+			//echo $catName . '<br />';
+	        if ($bid != 1)
+	        {
+	            $tempSQL = " (SELECT option_value AS blogname, post_content, post_title, post_date_gmt ,guid 
+	            FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
+	            WHERE post_status = 'publish' 
+	            AND post_type = 'post'
+	            AND option_name = 'blogname'
+	            AND ID IN
+	            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
+	            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
+	            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ".$singleLimit.")";
+	            if (strlen($postFromAllPost) > 0)
+	            {
+	                $postFromAllPost .= " UNION ".$tempSQL;
+	            }
+	            else $postFromAllPost .= $tempSQL;
+	        }
+	        
+	        
+	    }
+	    //echo '<b>query :</b> ' . $postFromAllPost . '<br />';
+	    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
+	    $postList = $wpdb->get_results($postFromAllPost , ARRAY_A);
+	    return $postList;
+	}
+
+	function echoAllPostsByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item'){
+		global $endWrap;
+		global $beginWrap;
+		
+		$endWrap = $tmp_endWrap;
+		$beginWrap = $tmp_beginWrap;
+		
+		getAllPostsByCategoryName($catName, $limit, $status);
+		if ($postList):
+	    foreach ($postList as $post)
+	    {
+	    	//echo $beginWrap."<a href=".$post["guid"].">".$post["post_title"]."</a>". '<br /><small>'.$post["blogname"] .'</small>'.$endWrap;
+			echo $beginWrap."<a href=".$post["guid"].">".$post["blogname"]."</a>". ' <small>'. $post["post_title"] .'</small>'.$endWrap;
+			//echo $beginWrap."<span>" .$post["blogname"]."</span>". '<br /><small>'. $post["post_title"] .'</small>'.$endWrap;
+	    }
+	    else: echo '<p>' . $message . '</p>';
+	    endif;
+	}
 }
-
-function echoAllPostsByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item'){
-	global $endWrap;
-	global $beginWrap;
-	
-	$endWrap = $tmp_endWrap;
-	$beginWrap = $tmp_beginWrap;
-	
-	getAllPostsByCategoryName($catName, $limit, $status);
-	if ($postList):
-    foreach ($postList as $post)
-    {
-    	//echo $beginWrap."<a href=".$post["guid"].">".$post["post_title"]."</a>". '<br /><small>'.$post["blogname"] .'</small>'.$endWrap;
-		echo $beginWrap."<a href=".$post["guid"].">".$post["blogname"]."</a>". ' <small>'. $post["post_title"] .'</small>'.$endWrap;
-		//echo $beginWrap."<span>" .$post["blogname"]."</span>". '<br /><small>'. $post["post_title"] .'</small>'.$endWrap;
-    }
-    else: echo '<p>' . $message . '</p>';
-    endif;
-}
-
 /**
  * OLD STUFF
  */
