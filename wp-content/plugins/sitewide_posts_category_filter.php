@@ -42,7 +42,7 @@ function getAllPostByCategoryName($catName, $limit)
             (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id =
             (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id =
             (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
-            if (strlen($newsFromAllPost) > 0)
+            if (strlen($postFromAllPost) > 0)
             {
                 $postFromAllPost .= " UNION ".$tempSQL;
             }
