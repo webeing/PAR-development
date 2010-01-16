@@ -23,40 +23,6 @@
  ------------------------------------------------------------------------
  */
 
-//Return an array whith the title and the permanent link, from the newest to the oldest post
-//
-function getAllPostByCategoryName($catName, $limit)
-{
-	global $wpdb;
-	global $table_prefix;
-	#$postFromAllPost = 1;
-    $postFromAllPost = "";
-    $blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs", ARRAY_A);
-    #var_dump($blog_list);
-    foreach ($blog_list as $ab)
-    {
-        $bid = $ab["blog_id"];
-		
-        if ($bid != 1)
-        {
-            $tempSQL = " SELECT post_content,post_title, post_date_gmt ,guid FROM `wp_".$bid."_posts` WHERE ID in
-            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id =
-            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id =
-            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
-            if (strlen($postFromAllPost) > 0)
-            {
-                $postFromAllPost .= " UNION ".$tempSQL;
-            }
-            $postFromAllPost .= $tempSQL;
-        }
-    }
-    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
-    
-    #echo $postFromAllPost;
-
-    $postList = $wpdb->get_results($postFromAllPost, ARRAY_A);
-	return $postList;
-}
 
 function getAllPostsByCategoryName($catName, $limit, $status='public'){
 	global $post;
@@ -138,6 +104,46 @@ function echoAllPostsByCategoryName($catName, $status='public', $limit, $tmp_beg
     endif;
 }
 
+/**
+ * OLD STUFF
+ */
+//Return an array whith the title and the permanent link, from the newest to the oldest post
+//
+/*
+function getAllPostByCategoryName($catName, $limit)
+{
+	global $wpdb;
+	global $table_prefix;
+	#$postFromAllPost = 1;
+    $postFromAllPost = "";
+    $blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs", ARRAY_A);
+    #var_dump($blog_list);
+    foreach ($blog_list as $ab)
+    {
+        $bid = $ab["blog_id"];
+		
+        if ($bid != 1)
+        {
+            $tempSQL = " SELECT post_content,post_title, post_date_gmt ,guid FROM `wp_".$bid."_posts` WHERE ID in
+            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id =
+            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id =
+            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
+            if (strlen($postFromAllPost) > 0)
+            {
+                $postFromAllPost .= " UNION ".$tempSQL;
+            }
+            $postFromAllPost .= $tempSQL;
+        }
+    }
+    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
+    
+    #echo $postFromAllPost;
+
+    $postList = $wpdb->get_results($postFromAllPost, ARRAY_A);
+	return $postList;
+}
+
+
 //print the title of the post taht match the category name, as a link to the complete entry.
 function echoAllPostByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item')
 {	
@@ -213,5 +219,5 @@ function echoAllPostByCategoryName($catName, $status='public', $limit, $tmp_begi
     else: echo '<p>' . $message . '</p>';
     endif;
 }
-
+*/
 ?>
