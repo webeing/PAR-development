@@ -1,5 +1,8 @@
 <?php
 function check_upload_size( $file ) {
+	if ( get_site_option( 'upload_space_check_disabled' ) ) {
+		return $file;
+	}
 	if( $file['error'] != '0' ) // there's already an error
 		return $file;
 
@@ -144,7 +147,11 @@ function confirm_delete_users( $users ) {
 	echo '<input type="hidden" name="alluser_transfer_delete" />';
 	wp_nonce_field( 'allusers' );
 	foreach ( (array) $_POST['allusers'] as $key => $val ) {
-		if( $val != '' && $val != '0' && $val != '1' ) {
+		if( $val != '' && $val != '0' ) {
+			$user = new WP_User( $val );
+			if ( in_array( $user->user_login, get_site_option( 'site_admins', array( 'admin' ) ) ) ) {
+				wp_die( sprintf( __( 'Warning! User cannot be deleted. The user %s is a site admnistrator.' ), $user->user_login ) );
+			}
 			echo "<input type='hidden' name='user[]' value='{$val}'/>\n";
 			$blogs = get_blogs_of_user( $val, true );
 			if( !empty( $blogs ) ) {
@@ -375,6 +382,9 @@ function display_space_usage() {
 
 // Display File upload quota on dashboard
 function dashboard_quota() {	
+	if ( get_site_option( 'upload_space_check_disabled' ) ) {
+		return true;
+	}
 	$quota = get_space_allowed();
 	$used = get_dirsize( BLOGUPLOADDIR )/1024/1024;
 
@@ -388,9 +398,9 @@ function dashboard_quota() {
 	<div class="table">
 	<table>
 		<tr class="first">
-			<td class="first b b-posts"><?php _e('<a href="upload.php" title="Manage Uploads..." class="musublink">'); echo $quota . __('MB</a>'); ?></td>
+			<td class="first b b-posts"><?php printf( __( '<a href="upload.php" title="Manage Uploads..." class="musublink">%sMB</a>' ), $quota ); ?></td>
 			<td class="t posts"><?php _e('Space Allowed'); ?></td>
-			<td class="b b-comments"><?php _e('<a href="upload.php" title="Manage Uploads..." class="musublink">'. $used .'MB ('. $percentused .'%)</a>'); ?></td>
+			<td class="b b-comments"><?php printf( __( '<a href="upload.php" title="Manage Uploads..." class="musublink">%1sMB (%2s%%)</a>' ), $used, $percentused ); ?>
 			<td class="last t comments <?php echo $used_color;?>"><?php _e('Space Used');?></td>
 		</tr>
 	</table>
@@ -448,6 +458,9 @@ function refresh_user_details($id) {
   Determines if the available space defined by the admin has been exceeded by the user
 */
 function wpmu_checkAvailableSpace() {
+	if ( get_site_option( 'upload_space_check_disabled' ) ) {
+		return true;
+	}
 	$spaceAllowed = get_space_allowed();
 
 	$dirName = trailingslashit( BLOGUPLOADDIR );
@@ -470,11 +483,10 @@ function wpmu_checkAvailableSpace() {
 	$size = $size / 1024 / 1024;
 
 	if( ($spaceAllowed - $size) <= 0 ) {
-		define( 'DISABLE_UPLOADS', true );
-		define( 'DISABLE_UPLOADS_MESSAGE', __('Sorry, you must delete files before you can upload any more.') );
+		wp_die( __('Sorry, you must delete files before you can upload any more.') );
 	}
 }
-add_action('upload_files_upload','wpmu_checkAvailableSpace');
+add_action('pre-upload-ui','wpmu_checkAvailableSpace');
 
 function format_code_lang( $code = '' ) {
 	$code = strtolower(substr($code, 0, 2));
@@ -583,10 +595,15 @@ function wpmu_menu() {
 add_action( '_admin_menu', 'wpmu_menu' );
 
 function mu_options( $options ) {
+	if ( defined( 'POST_BY_EMAIL' ) ) {
+		$writing = array( 'ping_sites' );
+	} else {
+		$writing = array( 'ping_sites', 'mailserver_login', 'mailserver_pass', 'default_email_category', 'mailserver_port', 'mailserver_url' );
+	}
 	$removed = array( 
 		'general' => array( 'siteurl', 'home', 'admin_email', 'users_can_register', 'default_role' ),
 		'reading' => array( 'gzipcompression' ),
-		'writing' => array( 'ping_sites', 'mailserver_login', 'mailserver_pass', 'default_email_category', 'mailserver_port', 'mailserver_url' ),
+		'writing' => $writing,
 	);
 
 	$added = array( 'general' => array( 'new_admin_email', 'WPLANG', 'language' ) );
@@ -1182,19 +1199,38 @@ function blogs_listing() {
 		echo "</td></tr>";
 	}
 	reset( $blogs );
-	foreach( $blogs as $user_blog ) {
-		$c = $c == "alternate" ? "" : "alternate";
-		?><tr class='<?php echo $c; ?>'><td valign='top'><h3><?php echo $user_blog->blogname; ?></h3>
-		<p><?php echo apply_filters( "myblogs_blog_actions", "<a href='{$user_blog->siteurl}'>" . __( 'Visit' ) . "</a> | <a href='{$user_blog->siteurl}/wp-admin/'>" . __( 'Dashboard' ) . "</a>", $user_blog ); ?></p>
-		</td><td valign='top'>
-		<?php
-		echo apply_filters( 'myblogs_options', '', $user_blog );
-		?></td></tr><?php
+	$num = count( $blogs );
+	$cols = 1;
+	if ( $num >= 20 ) {
+		$cols = 4;
+	} elseif ( $num >= 10 ) {
+		$cols = 2;
 	}
-	?>
+	$num_rows = ceil($num/$cols);
+	$split = 0;
+	for( $i = 1; $i <= $num_rows; $i++ ) {
+		$rows[] = array_slice( $blogs, $split, $cols );
+		$split = $split + $cols;
+	}
+  
+	foreach( $rows as $row ) {
+		$c = $c == "alternate" ? "" : "alternate";
+		echo "<tr class='$c'>";
+		foreach( $row as $user_blog ) {
+			$t = $t == "border-right: 1px solid #ccc;" ? "" : "border-right: 1px solid #ccc;";
+			echo "<td valign='top' style='$t; width:50%'>";
+			echo "<h3>{$user_blog->blogname}</h3>";
+			echo "<p>" . apply_filters( "myblogs_blog_actions", "<a href='{$user_blog->siteurl}'>" . __( 'Visit' ) . "</a> | <a href='{$user_blog->siteurl}/wp-admin/'>" . __( 'Dashboard' ) . "</a>", $user_blog ) . "</p>";
+			echo apply_filters( 'myblogs_options', '', $user_blog );
+			echo "</td>";
+		}
+		echo "</tr>";
+	}?>
 	</table>
 	<input type="hidden" name="action" value="updateblogsettings" />
-	<input type="submit" class="button-primary" value="<?php _e('Update Options') ?>" name="submit" />
+	<p>
+	 <input type="submit" class="button-primary" value="<?php _e('Update Options') ?>" name="submit" />
+	</p>
 	</form>
 	</div>
 	<?php
@@ -1230,9 +1266,7 @@ function stripslashes_from_options( $blog_id ) {
 				if ( !@unserialize( $value ) ) 
 					$value = stripslashes( $value ); 
 				if ( $value !== $row->meta_value ) {
-					error_log( "sitemeta update: {$row->meta_value} to $value" );
 					update_site_option( $row->meta_key, $value );
-					//$wpdb->update( $wpdb->sitemeta, array( 'meta_value' => $value ), array( 'meta_key' => $row->meta_key ) );
 				}
 			}
 			$start += 20;
@@ -1246,9 +1280,7 @@ function stripslashes_from_options( $blog_id ) {
 			if ( !@unserialize( $value ) ) 
 				$value = stripslashes( $value ); 
 			if ( $value !== $row->option_value ) {
-				error_log( "$blog_id options update: {$row->option_value} to $value" );
 				update_blog_option( $blog_id, $row->option_name, $value );
-				//$wpdb->update( $options_table, array( 'option_value' => $value ), array( 'option_name' => $row->option_name ) );
 			}
 		}
 		$start += 20;
@@ -1256,4 +1288,40 @@ function stripslashes_from_options( $blog_id ) {
 	refresh_blog_details( $blog_id );
 }
 add_action( 'wpmu_upgrade_site', 'stripslashes_from_options' );
+
+function show_post_thumbnail_warning() {
+	if ( false == is_site_admin() ) {
+		return;
+	}
+	$mu_media_buttons = get_site_option( 'mu_media_buttons', array() );
+	if ( !$mu_media_buttons[ 'image' ] && current_theme_supports( 'post-thumbnails' ) ) {
+		echo "<div id='update-nag'>" . sprintf( __( "Warning! The current theme supports post thumbnails. You must enable image uploads on <a href='%s'>the options page</a> for it to work." ), admin_url( 'wpmu-options.php' ) ) . "</div>";
+	}
+}
+add_action( 'admin_notices', 'show_post_thumbnail_warning' );
+
+function anti_spam_nag() {
+	if ( is_site_admin() == false || get_site_option( 'no_anti_spam_nag' ) ) {
+		return false;
+	}
+
+	if ( !get_site_option( 'registration' ) || get_site_option( 'registration' ) != 'all' )
+		return false;
+
+	if ( $_POST[ 'no_anti_spam_nag' ] ) {
+		check_admin_referer( 'spam_nag' );
+		update_site_option( 'no_anti_spam_nag', 1 );
+		return false;
+	}
+
+	if ( function_exists( 'cfc_stylesheet_html' ) == false && function_exists( 'wphc_option' ) == false ) {
+		echo "<div id='update-nag'><p>" . sprintf( __( "Warning! People can create blogs on your site. Please consider using <a href='%1s'>Cookies for Comments</a> or <a href='%2s'>WP-Hashcash</a> to fight the spammers." ), 'http://wordpress.org/extend/plugins/cookies-for-comments/', 'http://wordpress.org/extend/plugins/wp-hashcash/' );
+		echo "<form action='index.php' method='POST'>";
+		echo "<input type='hidden' name='no_anti_spam_nag' value='1' />";
+		wp_nonce_field( 'spam_nag' );
+		echo "<input type='submit' value='" . __( 'Hide' ) . "' />";
+		echo "</p></div>";
+	}
+}
+add_action( 'admin_notices', 'anti_spam_nag' );
 ?>

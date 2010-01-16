@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'par_db');
+define('DB_NAME', 'PAR-development');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'c0gn1t10n.');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -37,18 +37,11 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 define('VHOST', 'no'); 
-$base = '/par/';
-define('DOMAIN_CURRENT_SITE', 'r20291.ovh.net' );
-define('PATH_CURRENT_SITE', '/par/' );
+$base = '/par-git/PAR-development/';
+define('DOMAIN_CURRENT_SITE', '127.0.0.1' );
+define('PATH_CURRENT_SITE', '/par-git/PAR-development/' );
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOGID_CURRENT_SITE', '1' );
-
-/*
- * Hide Admin Bar permanently...
- * Enrico Corinti 04.01.2010
- */
-define( 'BP_DISABLE_ADMIN_BAR', true );
-
 
 /**#@+
  * Authentication Unique Keys.
@@ -59,13 +52,13 @@ define( 'BP_DISABLE_ADMIN_BAR', true );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', '6188eb8dc82d826cdee90206250ea67ae5dc333b592ab0c52526c7c745ae0e20');
-define('SECURE_AUTH_KEY', '28a60c74462e1ed5f05e57fa5f5bb669e83e7d0e3955c2cb6c7a77dbc277c67d');
-define('LOGGED_IN_KEY', '530f3e5f97708e2016f957b77c896d6bcdcacffb047645a1ec1a5038dde2d27f');
-define('NONCE_KEY', 'c9c2bf0d63054341b828e8e7cc52f11869e281c0ac8a36541c22b0c0a9128204');
-define('AUTH_SALT', '15db4d81f77874651acdc6d2cb3f8000c14eb4a092fd2422d488df52e2da0700');
-define('LOGGED_IN_SALT', '65847d5416d62be63fcb0e1f52f1cc41b92c6cb02fcaf94b1c91d5b762ae24e3');
-define('SECURE_AUTH_SALT', '1fa87c9f40fdb714e82b54794f2f68a039f738ffef4cc0bb060f2a2203368a75');
+define('AUTH_KEY', 'df34f452a6a1ecc62064f559fa2c76fb90792b576cd9e9c03950d79ce01ee96f');
+define('SECURE_AUTH_KEY', 'eae969ca275adf2deb5981fb6b9d60fa2f4d162ebe8dd2d3ae573cacebb9ae93');
+define('LOGGED_IN_KEY', '0214f1b2ec3cf7e6c585413696340670085371944d1c0ec5fbf153a0e5c1e6fe');
+define('NONCE_KEY', '7e84b28c39429548d7d41bdaa96b157933029eb3b9b26d01d4f40255bd2c179c');
+define('AUTH_SALT', '602f82d78a6bbb8c925bef1d8c7869f836861fc901fb43262944b8f89cd2fc63');
+define('LOGGED_IN_SALT', 'd55d115ca6c790aa5d2c740bf0f2c88263cecb9c9e3d90bf55064847bf5f4228');
+define('SECURE_AUTH_SALT', 'ca6137df8766869fb13f3308a532b77b0806444003d60ef94d86092a526febf7');
 /**#@-*/
 
 /**
