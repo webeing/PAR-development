@@ -61,7 +61,7 @@ function getAllPostsByCategoryName($catName, $limit, $status='public'){
 		//echo $catName . '<br />';
         if ($bid != 1)
         {
-            $tempSQL = " SELECT option_value AS blogname, post_title, post_date_gmt ,guid 
+            $tempSQL = " SELECT option_value AS blogname, post_title, post_content, post_date_gmt ,guid 
             FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
             WHERE post_status = 'publish' 
             AND post_type = 'post'
