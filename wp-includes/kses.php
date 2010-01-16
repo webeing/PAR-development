@@ -290,11 +290,31 @@ if (!CUSTOM_TAGS) {
 			'style' => array (),
 			'type' => array ()),
 		'ol' => array (
-			'class' => array (),
-			'start' => array (),
-			'style' => array (),
-			'type' => array ()),
-		'var' => array ());
+                  'class' => array (),
+                  'start' => array (),
+                  'style' => array (),
+                  'type' => array ()),
+                   'embed' => array (
+                   'style' => array (),
+                   'type' => array (),
+                   'id' => array (),
+                   'height' => array (),
+                   'width' => array (),
+                   'src' => array ()),
+                   'object' => array (
+                   'height' => array (),
+                   'width' => array ()),
+                   'param' => array (
+                   'name' => array (),
+                   'value' => array ()),
+                   'object' => array(
+                   'width' => array (),
+                   'height' => array (),
+                   'movie' => array (),
+                   'allowFullScreen' => array (),
+                   'embed src' => array(),
+                   'application/x-shockwave-flash' => array()),
+               'var' => array ());
 
 	/**
 	 * Kses allowed HTML elements.

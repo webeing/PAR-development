@@ -2,8 +2,8 @@
 /*
 Plugin Name: BP Group Documents
 Description: This BuddyPress component creates a document storage area within each group
-Version: 0.2.1
-Revision Date: December 28, 2009
+Version: 0.2.2
+Revision Date: January 5, 2009
 Requires at least: WPMU 2.8, BuddyPress 1.1
 Tested up to: WPMU 2.9, BuddyPress 1.1.3
 License: Example: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
@@ -180,6 +180,7 @@ function bp_group_documents_setup_nav() {
 		'parent_slug' => $bp->groups->slug, 
 		'screen_function' => 'bp_group_documents_display', 
 		'position' => 35, 
+		'user_has_access' => $bp->groups->current_group->user_has_access,
 		'item_css_id' => 'group-documents' ) );
 
 }
@@ -257,11 +258,11 @@ function bp_group_documents_display_content() {
 			echo '<div class="admin-links">';
 			if( $document->current_user_can('edit') ) {
 				$edit_link = wp_nonce_url( $template->action_link . '/edit/' . $document->id, 'group-documents-edit-link' );
-				echo "<a href='$edit_link'>Edit</a> | ";
+				echo "<a href='$edit_link'>" . __('Edit','bp-group-documents') . "</a> | ";
 			}
 			if( $document->current_user_can('delete') ) {
 				$delete_link = wp_nonce_url( $template->action_link . '/delete/' . $document->id, 'group-documents-delete-link' );
-				echo "<a href='$delete_link' id='bp-group-documents-delete'>Delete</a>";
+				echo "<a href='$delete_link' id='bp-group-documents-delete'>" . __('Delete','bp-group-documents') . "</a>";
 			}
 			echo '</div>';
 			echo '</li>';		
@@ -284,17 +285,17 @@ function bp_group_documents_display_content() {
 	<input type="hidden" name="bp_group_documents_operation" value="<?php echo $template->operation; ?>" />
 	<input type="hidden" name="bp_group_documents_id" value="<?php echo $template->id; ?>" />
 			<?php if( $template->operation == 'add' ) { ?>
-			<label>Choose File:</label>
+			<label><?php _e('Choose File:','bp-group-documents'); ?></label>
 			<input type="file" name="bp_group_documents_file" id="bp-group-documents-file" />
 			<?php } ?>
-			<label>Display Name:</label>
+			<label><?php _e('Display Name:','bp-group-documents'); ?></label>
 			<input type="text" name="bp_group_documents_name" id="bp-group-documents-name" value="<?php echo $template->name ?>" />
 			<?php if( BP_GROUP_DOCUMENTS_SHOW_DESCRIPTIONS ) { ?>
-			<label>Description:</label>
+			<label><?php _e('Description:', 'bp-group-documents'); ?></label>
 			<textarea name="bp_group_documents_description" id="bp-group-documents-description"><?php echo $template->description; ?></textarea>
 			<?php } ?>
 			<label></label>
-			<input type="submit" class="button" value="Submit" />
+			<input type="submit" class="button" value="<?php _e('Submit','bp-group-documents'); ?>" />
 	</form>
 	</div><!--end #post-new-topic-->
 	<?php } ?>
