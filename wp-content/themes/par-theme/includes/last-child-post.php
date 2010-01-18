@@ -1,7 +1,7 @@
 <?php
 if(is_home()) : ?>
 <div class="container"> 
-<?php var_dump (getAllPostsByCategoryName('Featured',3)); ?>
+<?php  ?>
 
 	<div id="last-child-container" class="left">	
 		<div class="box left">
