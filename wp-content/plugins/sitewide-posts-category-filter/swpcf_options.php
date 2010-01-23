@@ -1,6 +1,6 @@
 <?php ?>
 <div class="wrap" style="max-width:950px !important;">
-	<h2>Snazzy Archives</h2>
+	<h2>Site Wide Posts Category Filter</h2>
 	<div id="poststuff" style="margin-top:10px;">
 		<div id="mainblock" style="width:710px">
 			<div class="dbx-content">
