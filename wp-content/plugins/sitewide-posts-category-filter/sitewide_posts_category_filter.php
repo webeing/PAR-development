@@ -185,7 +185,7 @@ class SiteWidePostsManager{
             }
             else $postFromAllPost .= $tempSQL;
 	    }
-	    echo '<b>query :</b> ' . $postFromAllPost . '<br />';
+	    #echo '<b>query :</b> ' . $postFromAllPost . '<br />';
 	    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
 	    $postList = $wpdb->get_results($postFromAllPost , ARRAY_A);
 	    return $postList;
