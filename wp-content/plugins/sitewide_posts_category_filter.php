@@ -1,6 +1,6 @@
 <?
 /*
- Plugin Name: List SiteWide Recent Post By Category
+ Plugin Name: SiteWide Posts Manager 
  Plugin URI:
  Description: Creates a list of most recent post given a category across  all active blogs
  Author: Daniel Gomez Didier, Corinti Enrico, Agata Cruciani, Webeing
@@ -23,22 +23,67 @@
  ------------------------------------------------------------------------
  */
 
+global $wp_version;
+
+$exitMsg = "SiteWide Posts manager require Wordpress 2.8+";
+if (version_compare($wp_version,"2.8","<")){
+	exit($exitMsg);
+}
+
+if(!class_exists('SiteWidePostManager')):
 class SiteWidePostsManager{
+	
+	private $pluginUrl;
+	private $db_options = "SWPManager_options";
+	
+	/**
+	 * Defaults Hardcoded
+	 * ToDO: bring them on Plugin Settings page!!
+	 */
+	private $status='public'; 
+	private $orderedby = 'regitered'; 
+	private $order = "DESC";
 	
 	private $options;
 	private $blogList;
 
-	function __construct($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC")
+	//function __construct($blogExclude = false, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC")
+	function SiteWidePostsManager()
 	{
-		$this->QueryBlogs($blogExclude, $sitewideLimit, $status, $orderedby, $order);
+		//Save plugin URL informations...
+		
+		$this->pluginUrl = WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__));
+		#echo $this->pluginUrl;
+		
+		//Query for posts
+		//$this->QueryBlogs($blogExclude, $sitewideLimit, $status, $orderedby, $order);
+		$this->QueryBlogs();
 	}
 	
-	function QueryBlogs($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC"){
-
+	function Install(){
+		$this->get_swmp_options();
+	}
+	
+	/**
+	 * Query database for sitewide blogs informations
+	 */
+	//function QueryBlogs($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC"){
+	function QueryBlogs()
+	{
 		global $post;
 		global $wpdb;
 		global $table_prefix;
 		
+		$status = $this->status;
+		$orderedby = $this->orderedby;
+		$order = $this->order;
+		
+		/*
+		 * Blog to exclude option evaluated
+		 */
+		
+		if ($blogExclude == false) $blogExclude="";
+		else $blogExclude = " (NOT blog_id = $blogExclude) AND "; 
 		
 		/*
 		 * Status option evalueted
@@ -76,18 +121,42 @@ class SiteWidePostsManager{
      	/*
      	 * Query SiteWide Blogs
      	 */
-     	$this->blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE " . $this->options, ARRAY_A);
-     	
-     	var_dump($this->blog_list);
+     	$this->blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE $blogExclude" . $this->options, ARRAY_A);
+     	#echo "results: ";
+     	#var_dump($this->blog_list);
+     	#$this->blog_list = array_filter($this->blog_list, stripBlog);
+     	#$this->blog_list = array_values($this->blog_list);
+     	#var_dump($this->blog_list);
      	
 	}
 	
+	function stripBlog($item){
+		global $blogExclude;
+		return ($item['blog_id'] == $blogExclude);	
+     }	
+	
+	/**
+	 * Get $singleLimit blogs' posts from all blogs by specified category name (NOR slug!)
+	 */
 	function getAllPostsByCategoryName($catName, $singleLimit = 1){
 		global $post;
 		global $wpdb;
 		global $table_prefix;
 		
 		$post = null;
+		
+		$categories = explode(',',$catName);
+		#var_dump($categories);
+		$count = count($categories);
+		if ($count>1):
+			foreach ($categories as $category):
+				$where .= "name='$category'"; 
+				if ($count != 1) $where .= " OR ";
+				$count --;
+			endforeach;
+		else:
+			$where = "name='$categories[0]'";
+		endif;
 		
 		/*
 		 * Limits option evalueted
@@ -99,40 +168,41 @@ class SiteWidePostsManager{
 	        $bid = $ab["blog_id"];
 			//echo $bid . '<br />';
 			//echo $catName . '<br />';
-	        if ($bid != 1)
-	        {
-	            $tempSQL = " (SELECT option_value AS blogname, post_content, post_title, post_date_gmt ,guid 
-	            FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
-	            WHERE post_status = 'publish' 
-	            AND post_type = 'post'
-	            AND option_name = 'blogname'
-	            AND ID IN
-	            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
-	            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
-	            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ".$singleLimit.")";
-	            if (strlen($postFromAllPost) > 0)
-	            {
-	                $postFromAllPost .= " UNION ".$tempSQL;
-	            }
-	            else $postFromAllPost .= $tempSQL;
-	        }
-	        
-	        
+	       
+            $tempSQL = " (SELECT option_value AS blogname, post_content, post_title, post_date_gmt ,guid 
+            FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
+            WHERE post_status = 'publish' 
+            AND post_type = 'post'
+            AND option_name = 'blogname'
+            AND ID IN
+            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
+            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
+            (SELECT term_id FROM `wp_".$bid."_terms` WHERE $where" ."))) ".$singleLimit.")";
+            //(SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ".$singleLimit.")";
+            if (strlen($postFromAllPost) > 0)
+            {
+                $postFromAllPost .= " UNION ".$tempSQL;
+            }
+            else $postFromAllPost .= $tempSQL;
 	    }
-	    //echo '<b>query :</b> ' . $postFromAllPost . '<br />';
+	    echo '<b>query :</b> ' . $postFromAllPost . '<br />';
 	    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
 	    $postList = $wpdb->get_results($postFromAllPost , ARRAY_A);
 	    return $postList;
 	}
 
-	function echoAllPostsByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item'){
+	/**
+	 * Output HTML structure for category based sitewide posts
+	 */
+	function AllPostsByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item'){
 		global $endWrap;
 		global $beginWrap;
 		
 		$endWrap = $tmp_endWrap;
 		$beginWrap = $tmp_beginWrap;
 		
-		getAllPostsByCategoryName($catName, $limit, $status);
+		$this->getAllPostsByCategoryName($catName, $limit, $status);
+		
 		if ($postList):
 	    foreach ($postList as $post)
 	    {
@@ -143,121 +213,68 @@ class SiteWidePostsManager{
 	    else: echo '<p>' . $message . '</p>';
 	    endif;
 	}
-}
-/**
- * OLD STUFF
- */
-//Return an array whith the title and the permanent link, from the newest to the oldest post
-//
-/*
-function getAllPostByCategoryName($catName, $limit)
-{
-	global $wpdb;
-	global $table_prefix;
-	#$postFromAllPost = 1;
-    $postFromAllPost = "";
-    $blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs", ARRAY_A);
-    #var_dump($blog_list);
-    foreach ($blog_list as $ab)
-    {
-        $bid = $ab["blog_id"];
+	
+	/***
+	 * Time for Wordpress Plugin Options settings ...
+	 */
+	function get_swpm_options(){
 		
-        if ($bid != 1)
-        {
-            $tempSQL = " SELECT post_content,post_title, post_date_gmt ,guid FROM `wp_".$bid."_posts` WHERE ID in
-            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id =
-            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id =
-            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
-            if (strlen($postFromAllPost) > 0)
-            {
-                $postFromAllPost .= " UNION ".$tempSQL;
-            }
-            $postFromAllPost .= $tempSQL;
-        }
-    }
-    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
-    
-    #echo $postFromAllPost;
+		//defaults
+		$options = array
+		(
+			'totalposts' => 5,
+			'postsbycategory' => 1,
+			'categories' => 'Featured',
+			'blogtoexclude' => 1
+		);
+		
+		$saved = get_option($this->db_options);
+		
+		if (!empty($saved))
+		{
+			foreach ($saved as $key => $option)
+				$options[$key] = $option;
+		}
+		if ($saved != $options)
+			update_option($this->db_option, $options);
+		
+		return $options;
+		
+	}
 
-    $postList = $wpdb->get_results($postFromAllPost, ARRAY_A);
-	return $postList;
+	function handle_options(){
+		$options = $this->get_options();
+		if (isset($_POST['submitted']))
+		{
+			check_admin_referer('swpcf_nonce');
+			$options = array();
+			$options['totalposts'] = $_POST['totalposts'];
+			$options['postsbycategory'] = $_POST['postsbycategory'];
+			$options['categories'] = $_POST['categories'];
+			$options['blogtoexclude'] = $_POST['blogtoexclude'];
+
+			update_options($this->db_options, $options);
+			
+			echo '<div class="updated fade"><p>Plugin Setting saved...</p></div>';
+		}
+		
+		$totalposts = $options['totalposts'];
+		$postsbycategory = $options['postsbycategory'];
+		$categories = $options['categories'];
+		$blogtoexclude = $options['blogtoexclude'];
+		
+		$action_url = $_SERVER['REQUEST_URI'];
+		
+		include 'swpcf_options.php';
+	}
 }
+else :
+	exit("Class already declared!");
+endif;
 
-
-//print the title of the post taht match the category name, as a link to the complete entry.
-function echoAllPostByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item')
-{	
-	global $post;
-	global $wpdb;
-	global $table_prefix;
-	
-	global $endWrap;
-	global $beginWrap;
-	
-	$post = null;
-	$endWrap = $tmp_endWrap;
-	$beginWrap = $tmp_beginWrap;
-	$orderedby = 'regitered';
-	
-	if ($limit == 0) $limit = "";
-	else $limit = "LIMIT 0,". $limit;
-	
-    $postFromAllPost = "";
-    
-	switch ($status){ 
-    	case "public": {
-    		$options = "public = '1' AND archived = '0' AND mature = '0' AND spam = '0' AND deleted ='0' ";
-    		#echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
-    		break;
-    	}
-    	case "archived" : {
-    		$options = "public = '1' AND archived = '1' AND mature = '0' AND spam = '0' AND deleted ='0' ";
-    		 #echo "SELECT blog_id, last_updated FROM " . $wpdb->blogs. " WHERE " . $options;
-    		 break;
-    	}
-    }
-    
-    //echo "SELECT blog_id FROM wp_blogs WHERE " . $options;
-    $blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE " . $options . " ORDER BY '" . $orderedby . "' DESC" , ARRAY_A);
-	//$blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs", ARRAY_A);
-    foreach ($blog_list as $ab)
-    {
-        $bid = $ab["blog_id"];
-		//echo $bid . '<br />';
-		//echo $catName . '<br />';
-        if ($bid != 1)
-        {
-            $tempSQL = " SELECT option_value AS blogname, post_title, post_date_gmt ,guid 
-            FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
-            WHERE post_status = 'publish' 
-            AND post_type = 'post'
-            AND option_name = 'blogname'
-            AND ID IN
-            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
-            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
-            (SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ";
-            if (strlen($postFromAllPost) > 0)
-            {
-                $postFromAllPost .= " UNION ".$tempSQL;
-            }
-            else $postFromAllPost .= $tempSQL;
-        }
-        
-        //echo '<b>query :</b> ' . $postFromAllPost . '<br />';
-    }
-    
-    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
-    $postList = $wpdb->get_results($postFromAllPost . $limit , ARRAY_A);
-	#var_dump($postList);
-	if ($postList):
-    foreach ($postList as $post)
-    {
-    	//echo $beginWrap."<a href=".$post["guid"].">".$post["post_title"]."</a>". '<br /><small>'.$post["blogname"] .'</small>'.$endWrap;
-		echo $beginWrap."<a href=".$post["guid"].">".$post["blogname"]."</a>". ' <small>'. $post["post_title"] .'</small>'.$endWrap;
-		//echo $beginWrap."<span>" .$post["blogname"]."</span>". '<br /><small>'. $post["post_title"] .'</small>'.$endWrap;
-    }
-    else: echo '<p>' . $message . '</p>';
-    endif;
+//Create initial instance...
+$blogsManager = new SiteWidePostsManager();
+if(isset($blogsManager)){
+	register_activation_hook(__FILE__, array(&$blogsManager,'Install'));
 }
-*/
 ?>
