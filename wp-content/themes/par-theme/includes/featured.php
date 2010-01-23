@@ -1,10 +1,8 @@
 <?php if(is_home()) : ?>
 
-<?php 
-
-	$blogsManager = new SiteWidePostsManager(1,2);
-
-?>
+	<?php 
+		$blogsManager = new SiteWidePostsManager(10,3);
+	?>
 
 <div id="featured">
 	<div class="container">
