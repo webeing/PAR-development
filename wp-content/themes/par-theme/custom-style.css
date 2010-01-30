@@ -11,6 +11,11 @@ Tags: wordpress-mu, par, webeing
 body{
 }
 
+/* FEATURED AREA */
+#featured .featured-container{
+	width: 960px;
+}
+
 /*  - LAST CHILDREN STYLE
 /* ----------------------------------------------*/
 
