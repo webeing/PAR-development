@@ -54,7 +54,7 @@ class SiteWidePostsManager{
 		$this->pluginUrl = WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__));
 		
 		//Add Options Page
-		add_action('admin_menu', array(&$this,'add_admin_menu'))
+		add_action('admin_menu', array(&$this,'add_admin_menu'));
 		
 	}
 	
@@ -135,7 +135,7 @@ class SiteWidePostsManager{
 	{
    		$phrase_array = explode(' ',$phrase);
    		if(count($phrase_array) > $max_words && $max_words > 0)
-      		$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'  
+      		$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'  ;
    		return $phrase;
 }
      
@@ -215,10 +215,10 @@ class SiteWidePostsManager{
 		 */
 		$beginWrap = '<div class="featured-norm clearfix">';
 		$endWrap = '</div>';
-		$message = 'no entry for this item'
+		$message = 'no entry for this item';
 		
 		//Get all post due to options defined
-		$this->getAllPostsByCategoryName(
+		$postList = $this->getAllPostsByCategoryName(
 							$swpm_options['blogtoexclude'], 
 							$swpm_options['totalposts'], 
 							$swpm_options['categories'], 
@@ -280,7 +280,7 @@ class SiteWidePostsManager{
 	}
 
 	function handle_swpm_options(){
-		$options = $this->get_options();
+		$options = $this->get_swpm_options();
 		if (isset($_POST['submitted']))
 		{
 			check_admin_referer('swpcf_nonce');
@@ -290,7 +290,7 @@ class SiteWidePostsManager{
 			$options['categories'] = $_POST['categories'];
 			$options['blogtoexclude'] = $_POST['blogtoexclude'];
 
-			update_options($this->db_options, $options);
+			update_option($this->db_options, $options);
 			
 			echo '<div class="updated fade"><p>Plugin Setting saved...</p></div>';
 		}
@@ -308,10 +308,10 @@ class SiteWidePostsManager{
 	
 	function add_admin_menu()
 	{
-		add_option_page('SiteWide Post Manager', 
+		add_options_page('SiteWide Post Manager', 
 						'SiteWide Posts', 
 						8, basename(__FILE__), 
-						array(&this,'handle_swpm_options'));
+						array(&$this,'handle_swpm_options'));
 	}
 }
 else :
@@ -325,8 +325,12 @@ if(isset($blogsManager)){
 }
 
 function SWPMOutput(){
+	global $blogsManager;
 	if(isset($blogsManager)){
+		var_dump($blogsManager);
+		
 		$blogsManager->AllPostsByCategoryName();
+		
 	}
 }
 ?>
