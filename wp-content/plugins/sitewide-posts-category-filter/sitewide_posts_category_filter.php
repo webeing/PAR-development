@@ -4,6 +4,7 @@
  Plugin URI:
  Description: Creates a list of most recent post given a category across  all active blogs
  Author: Daniel Gomez Didier, Corinti Enrico, Agata Cruciani, Webeing
+ Author URI: http://www.webeing.net
  Version: 0.5 beta.
  License: GNU General Public License version 3.
  ------------------------------------------------------------------------
@@ -54,7 +55,7 @@ class SiteWidePostsManager{
 		$this->pluginUrl = WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__));
 		
 		//Add Options Page
-		add_action('admin_menu', array(&$this,'add_admin_menu'))
+		add_action('admin_menu', array(&$this,'add_admin_menu'));
 		
 	}
 	
@@ -135,10 +136,9 @@ class SiteWidePostsManager{
 	{
    		$phrase_array = explode(' ',$phrase);
    		if(count($phrase_array) > $max_words && $max_words > 0)
-      		$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'  
+      		$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...';  
    		return $phrase;
-}
-     
+	}
 	
 	/**
 	 * Get $singleLimit blogs' posts from all blogs by specified category name (NOR slug!)
@@ -179,13 +179,15 @@ class SiteWidePostsManager{
 	       
             $tempSQL = " (SELECT option_value AS blogname, post_content, post_title, post_date_gmt ,guid 
             FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
-            WHERE post_status = 'publish' 
-            AND post_type = 'post'
-            AND option_name = 'blogname'
-            AND ID IN
-            (SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
-            (SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
-            (SELECT term_id FROM `wp_".$bid."_terms` WHERE $where" ."))) ".$singleLimit.")";
+            WHERE 
+            	post_status = 'publish'  
+            	AND post_type = 'post'
+            	AND option_name = 'blogname'
+            	AND ID IN
+            		(SELECT object_id FROM `wp_".$bid."_term_relationships` WHERE term_taxonomy_id IN
+            		(SELECT term_taxonomy_id FROM `wp_".$bid."_term_taxonomy` WHERE term_id IN
+            		(SELECT term_id FROM `wp_".$bid."_terms` WHERE $where" ."))) " . 
+            "ORDER BY post_date_gmt DESC ".$singleLimit.")";
             //(SELECT term_id FROM `wp_".$bid."_terms` WHERE name='".$catName."'))) ".$singleLimit.")";
             if (strlen($postFromAllPost) > 0)
             {
@@ -196,6 +198,7 @@ class SiteWidePostsManager{
 	    #echo '<b>query :</b> ' . $postFromAllPost . '<br />';
 	    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
 	    $postList = $wpdb->get_results($postFromAllPost , ARRAY_A);
+	    #var_dump($postList);
 	    return $postList;
 	}
 
@@ -215,24 +218,27 @@ class SiteWidePostsManager{
 		 */
 		$beginWrap = '<div class="featured-norm clearfix">';
 		$endWrap = '</div>';
-		$message = 'no entry for this item'
+		$message = 'no entry for this item';
 		
 		//Get all post due to options defined
-		$this->getAllPostsByCategoryName(
+		$postList = $this->getAllPostsByCategoryName(
 							$swpm_options['blogtoexclude'], 
 							$swpm_options['totalposts'], 
 							$swpm_options['categories'], 
 							$swpm_options['postsbycategory']);
-		
+
 		if ($postList):
 	    foreach ($postList as $post)
 	    {
 	    // HTML WRAPPER
     ?>
+    	<div class="featured-container">
+    		<h3><?php echo $post["blogname"]; ?></h3>
 	    	<div class="featured-content">
 				<h2 class="featured">
 					<a href="<?php echo $post["guid"]; ?>" rel="bookmark" title="Permanent Link to <?php echo $post["post_title"]; ?>"><?php echo $post["post_title"]; ?></a>
 				</h2>
+				<span class="pdate"><?php echo mysql2date("Y | F | d",$post["post_date_gmt"]) ?></span>
 				<div class="featured-entry">
 					<?php echo $this->truncate($post["post_content"],55); ?>
 				</div>
@@ -240,6 +246,8 @@ class SiteWidePostsManager{
 			<div class="featured-preview">
 				<?php woo_get_image('image',550,220,'thumb alignleft'); ?>
 			</div>
+			<br class="clear" />
+		</div>
 	<?php 	
 		//END HTML WRAPPER
 		
@@ -280,7 +288,7 @@ class SiteWidePostsManager{
 	}
 
 	function handle_swpm_options(){
-		$options = $this->get_options();
+		$options = $this->get_swpm_options();
 		if (isset($_POST['submitted']))
 		{
 			check_admin_referer('swpcf_nonce');
@@ -290,7 +298,7 @@ class SiteWidePostsManager{
 			$options['categories'] = $_POST['categories'];
 			$options['blogtoexclude'] = $_POST['blogtoexclude'];
 
-			update_options($this->db_options, $options);
+			update_option($this->db_options, $options);
 			
 			echo '<div class="updated fade"><p>Plugin Setting saved...</p></div>';
 		}
@@ -308,10 +316,10 @@ class SiteWidePostsManager{
 	
 	function add_admin_menu()
 	{
-		add_option_page('SiteWide Post Manager', 
+		add_options_page('SiteWide Post Manager', 
 						'SiteWide Posts', 
 						8, basename(__FILE__), 
-						array(&this,'handle_swpm_options'));
+						array(&$this,'handle_swpm_options'));
 	}
 }
 else :
@@ -325,6 +333,7 @@ if(isset($blogsManager)){
 }
 
 function SWPMOutput(){
+	global $blogsManager;
 	if(isset($blogsManager)){
 		$blogsManager->AllPostsByCategoryName();
 	}
