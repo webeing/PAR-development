@@ -51,13 +51,11 @@ class SiteWidePostsManager{
 	function SiteWidePostsManager()
 	{
 		//Save plugin URL informations...
-		
 		$this->pluginUrl = WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__));
-		#echo $this->pluginUrl;
 		
-		//Query for posts
-		//$this->QueryBlogs($blogExclude, $sitewideLimit, $status, $orderedby, $order);
-		$this->QueryBlogs();
+		//Add Options Page
+		add_action('admin_menu', array(&$this,'add_admin_menu'))
+		
 	}
 	
 	function Install(){
@@ -67,8 +65,7 @@ class SiteWidePostsManager{
 	/**
 	 * Query database for sitewide blogs informations
 	 */
-	//function QueryBlogs($blogExclude, $sitewideLimit = 5, $status='public', $orderedby = 'regitered', $order = "DESC"){
-	function QueryBlogs()
+	function QueryBlogs($blogExclude, $sitewideLimit)
 	{
 		global $post;
 		global $wpdb;
@@ -103,8 +100,7 @@ class SiteWidePostsManager{
 	    
 	    /*
 	     * OrderBy option evalueted
-	     */
-	    
+	     */    
 	    $this->options .= " ORDER BY '" . $orderedby. "'";
 	    
 	    /*
@@ -134,16 +130,28 @@ class SiteWidePostsManager{
 		global $blogExclude;
 		return ($item['blog_id'] == $blogExclude);	
      }	
+     
+    private function Truncate($phrase, $max_words)
+	{
+   		$phrase_array = explode(' ',$phrase);
+   		if(count($phrase_array) > $max_words && $max_words > 0)
+      		$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'  
+   		return $phrase;
+}
+     
 	
 	/**
 	 * Get $singleLimit blogs' posts from all blogs by specified category name (NOR slug!)
 	 */
-	function getAllPostsByCategoryName($catName, $singleLimit = 1){
+	function getAllPostsByCategoryName($blogExclude, $siteWideLimit, $catName, $singleLimit){
 		global $post;
 		global $wpdb;
 		global $table_prefix;
 		
 		$post = null;
+		
+		//Query for blogs
+		$this->QueryBlogs($blogExclude, $siteWideLimit);
 		
 		$categories = explode(',',$catName);
 		#var_dump($categories);
@@ -194,21 +202,50 @@ class SiteWidePostsManager{
 	/**
 	 * Output HTML structure for category based sitewide posts
 	 */
-	function AllPostsByCategoryName($catName, $status='public', $limit, $tmp_beginWrap, $tmp_endWrap, $message = 'no entry for this item'){
-		global $endWrap;
-		global $beginWrap;
+	function AllPostsByCategoryName(){
 		
-		$endWrap = $tmp_endWrap;
-		$beginWrap = $tmp_beginWrap;
+		/**
+		 * Retreive all options form Settings
+		 */
+		$swpm_options = $this->get_swpm_options();
 		
-		$this->getAllPostsByCategoryName($catName, $limit, $status);
+		/*
+		 * HTML Wrapper and messages Hardcoded!
+		 * ToDo: put it on admin page!
+		 */
+		$beginWrap = '<div class="featured-norm clearfix">';
+		$endWrap = '</div>';
+		$message = 'no entry for this item'
+		
+		//Get all post due to options defined
+		$this->getAllPostsByCategoryName(
+							$swpm_options['blogtoexclude'], 
+							$swpm_options['totalposts'], 
+							$swpm_options['categories'], 
+							$swpm_options['postsbycategory']);
 		
 		if ($postList):
 	    foreach ($postList as $post)
 	    {
-	    	//echo $beginWrap."<a href=".$post["guid"].">".$post["post_title"]."</a>". '<br /><small>'.$post["blogname"] .'</small>'.$endWrap;
-			echo $beginWrap."<a href=".$post["guid"].">".$post["blogname"]."</a>". ' <small>'. $post["post_title"] .'</small>'.$endWrap;
-			//echo $beginWrap."<span>" .$post["blogname"]."</span>". '<br /><small>'. $post["post_title"] .'</small>'.$endWrap;
+	    // HTML WRAPPER
+    ?>
+	    	<div class="featured-content">
+				<h2 class="featured">
+					<a href="<?php echo $post["guid"]; ?>" rel="bookmark" title="Permanent Link to <?php echo $post["post_title"]; ?>"><?php echo $post["post_title"]; ?></a>
+				</h2>
+				<div class="featured-entry">
+					<?php echo $this->truncate($post["post_content"],55); ?>
+				</div>
+			</div>
+			<div class="featured-preview">
+				<?php woo_get_image('image',550,220,'thumb alignleft'); ?>
+			</div>
+	<?php 	
+		//END HTML WRAPPER
+		
+	    //echo $beginWrap."<a href=".$post["guid"].">".$post["post_title"]."</a>". '<br /><small>'.$post["blogname"] .'</small>'.$endWrap;
+		//echo $beginWrap."<a href=".$post["guid"].">".$post["blogname"]."</a>". ' <small>'. $post["post_title"] .'</small>'.$endWrap;
+		//echo $beginWrap."<span>" .$post["blogname"]."</span>". '<br /><small>'. $post["post_title"] .'</small>'.$endWrap;
 	    }
 	    else: echo '<p>' . $message . '</p>';
 	    endif;
@@ -242,7 +279,7 @@ class SiteWidePostsManager{
 		
 	}
 
-	function handle_options(){
+	function handle_swpm_options(){
 		$options = $this->get_options();
 		if (isset($_POST['submitted']))
 		{
@@ -265,7 +302,16 @@ class SiteWidePostsManager{
 		
 		$action_url = $_SERVER['REQUEST_URI'];
 		
+		//Include Options Form!
 		include 'swpcf_options.php';
+	}
+	
+	function add_admin_menu()
+	{
+		add_option_page('SiteWide Post Manager', 
+						'SiteWide Posts', 
+						8, basename(__FILE__), 
+						array(&this,'handle_swpm_options'));
 	}
 }
 else :
@@ -276,5 +322,11 @@ endif;
 $blogsManager = new SiteWidePostsManager();
 if(isset($blogsManager)){
 	register_activation_hook(__FILE__, array(&$blogsManager,'Install'));
+}
+
+function SWPMOutput(){
+	if(isset($blogsManager)){
+		$blogsManager->AllPostsByCategoryName();
+	}
 }
 ?>
