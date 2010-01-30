@@ -244,7 +244,7 @@ class SiteWidePostsManager{
 				</div>
 			</div>
 			<div class="featured-preview">
-				<?php woo_get_image('image',550,220,'thumb alignleft'); ?>
+				<?php echo $this->catch_first_image($post,'thumb alignleft',550); ?>
 			</div>
 			<br class="clear" />
 		</div>
@@ -258,6 +258,28 @@ class SiteWidePostsManager{
 	    else: echo '<p>' . $message . '</p>';
 	    endif;
 	}
+
+	/**
+	* Take the first image in Wp-Content and convert it in the Thumb for Posts preview
+	* By Enrico Corinti 2009.11.01
+	* @width = 100 default value for image size
+	* @return, the image <img /> yet formatted
+	*/
+	function catch_first_image($post,$class,$width = '100') {
+	  $title = $post['post_title'];
+	  $first_img = '';
+	  ob_start();
+	  ob_end_clean();
+	  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post["post_content"], $matches);
+	  $first_img = $matches [1] [0];
+	    
+	  if(empty($first_img) || ($first_img == "/")){ //Defines a default image
+	    //$first_img = "/images/default.jpg";
+		return "";
+	  }
+	  return "<img class=\"$class\" width=\"$width\" src=\"$first_img\" title=\"Leggi tutto $title\" />";
+	}
+	
 	
 	/***
 	 * Time for Wordpress Plugin Options settings ...
