@@ -39,6 +39,8 @@ class BP_Group_Documents_Template {
 	private function do_post_logic() {
 		global $bp;
 
+		do_action('bp_group_documents_template_do_post_action');
+
 		//if user just submitted a form - Processing logic
 		if( isset( $_POST['bp_group_documents_operation'] ) ) {
 			if ( get_magic_quotes_gpc() ) {
@@ -73,6 +75,8 @@ class BP_Group_Documents_Template {
 	private function do_url_logic() {
 		global $bp;
 
+		do_action('bp_group_documents_template_do_url_logic');
+
 		//figure out what to display in the bottom "detail" area based on url
 		//assume we are adding a new document
 		$document = new BP_Group_Documents();
@@ -100,6 +104,8 @@ class BP_Group_Documents_Template {
 
 	private function do_paging_logic(){
 		global $bp;
+
+		do_action('bp_group_documents_template_do_paging_logic');
 
 		$this->items_per_page = get_option('bp_group_documents_items_per_page');
 

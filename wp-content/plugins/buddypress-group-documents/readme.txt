@@ -2,8 +2,8 @@
 Contributors: Peter Anselmo
 Tags: wpmu, buddypress, group, document, plugin, file, media, storage, upload, widget
 Requires at least: WPMU 2.8, BuddyPress 1.0
-Tested up to: 2.9/1.1.3
-Stable tag: 0.2.2
+Tested up to: 2.9/1.2
+Stable tag: 0.2.4
 
 This allows members of BuddyPress groups to upload and store documents that are relevant to the group.
 
@@ -37,6 +37,16 @@ Please don't hesitate to contact me, especially if you run into trouble.  I will
 
 ==Changelog==
 
+Aplogies for the frequent updates, this plugin is under active development!
+
+= 0.2.4 =
+* Fixed a bug where errors were thrown on group deletion
+
+= 0.2.3 =
+* Added BuddyPress 1.2 Compatibility
+* Added additional callbacks for extensibility
+* Fixed bug where newlines were dropping from description
+
 = 0.2.2 =
 * Fixed bug where documents in private groups were visible to everyone
 * Additional strings added for i18n
@@ -66,6 +76,8 @@ Please don't hesitate to contact me, especially if you run into trouble.  I will
 * Initial Realease
 
 == Notes ==
+
+Roadmap.txt - contains ideas proposed and the (approximate) order of implementation
 
 History.txt - contains all the changes since version .1
 

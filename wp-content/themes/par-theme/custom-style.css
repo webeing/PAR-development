@@ -11,11 +11,6 @@ Tags: wordpress-mu, par, webeing
 body{
 }
 
-/* FEATURED AREA */
-#featured .featured-container{
-	width: 960px;
-}
-
 /*  - LAST CHILDREN STYLE
 /* ----------------------------------------------*/
 
@@ -68,61 +63,72 @@ body{
 /*  - LOGO CHILD CAROUSEL STYLE
 /* ----------------------------------------------*/
 
-/**
- * This <div> element is wrapped by jCarousel around the list
- * and has the classname "jcarousel-container".
- */
-.jcarousel-container {
-    position: relative;
+.infiniteCarousel {
+  width: 960px;
+  position:relative;
 }
 
-.jcarousel-clip {
-    z-index: 2;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
+.infiniteCarousel .wrapper {
+  width: 850px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
+  overflow: auto;
+  min-height: 10em;
+  margin: 0 40px;
 }
 
-.jcarousel-list {
-    z-index: 1;
-    overflow: hidden;
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
+.infiniteCarousel ul a img {
+  border: 5px solid #748A9C;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
-.jcarousel-list li,
-.jcarousel-item {
-    float: left;
-    list-style: none;
-    /* We set the width/height explicitly. No width/height causes infinite loops. */
-
+.infiniteCarousel .wrapper ul {
+  width: 9999px;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0;
+  padding:0;
 }
 
-/**
- * The buttons are added dynamically by jCarousel before
- * the <ul> list (inside the <div> described above) and
- * have the classnames "jcarousel-next" and "jcarousel-prev".
- */
-.jcarousel-next {
-    z-index: 3;
-    display: none;
+.infiniteCarousel ul li {
+  display:block;
+  float:left;
+  padding: 10px;
+  height: 85px;
+  width: 85px;
 }
 
-.jcarousel-prev {
-    z-index: 3;
-    display: none;
+.infiniteCarousel ul li a img {
+  display:block;
 }
 
-.jcarousel-skin-tango .jcarousel-container-horizontal {
-    width: 85%;
+.infiniteCarousel .arrow {
+  display: block;
+  height: 36px;
+  width: 37px;
+  background: url(images/arrow.png) no-repeat 0 0;
+  text-indent: -999px;
+  position: absolute;
+  top: 65px;
+  cursor: pointer;
 }
 
-.jcarousel-skin-tango .jcarousel-clip-horizontal {
-    width: 100%;
+.infiniteCarousel .forward {
+  background-position: 0 0;
+  right: 0;
+}
+
+.infiniteCarousel .back {
+  background-position: 0 -72px;
+  left: 0;
+}
+
+.infiniteCarousel .forward:hover {
+  background-position: 0 -36px;
+}
+
+.infiniteCarousel .back:hover {
+  background-position: 0 -108px;
 }
 
 /*  - FOOTER STYLE
@@ -163,10 +169,3 @@ ul#letter-list li a{
 ul#members-list li, ul#featured-members-list li{
 	margin:5px 0;
 }
-
-#logout-link{
-	margin:10px 0 0;
-	text-align:right;
-}
-
-
