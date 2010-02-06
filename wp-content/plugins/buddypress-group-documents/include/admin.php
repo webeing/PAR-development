@@ -8,6 +8,8 @@
 function bp_group_documents_admin() { 
 	global $bp, $bbpress_live;
 		
+	do_action('bp_group_documents_admin');
+
 	/* If the form has been submitted and the admin referrer checks out, save the settings */
 	if ( isset( $_POST['submit'] ) && check_admin_referer('group-documents-settings') ) {
 		//strip whitespace from comma separated list
@@ -23,7 +25,7 @@ function bp_group_documents_admin() {
 		update_option( 'bp_group_documents_valid_file_formats', $formats );
 		update_option( 'bp_group_documents_display_file_size', $size );
 
-		if( $_POST['items_per_page'] && ctype_digit( $_POST['items_per_page'] ) ){
+		if( ctype_digit( $_POST['items_per_page'] ) ){
 			update_option( 'bp_group_documents_items_per_page', $_POST['items_per_page'] );
 		}
 		$updated = true;

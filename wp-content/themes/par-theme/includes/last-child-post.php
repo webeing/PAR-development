@@ -2,9 +2,35 @@
 if(is_home()) : ?>
 <div class="container"> 
 	<div id="last-child-container" class="left">	
+		<div class="box left">
+			<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Last Article Segment 1</a></h3>
+			<div class="last-child-thumb">
+				<img src="<?php bloginfo('template_url');?>/images/flickr.gif" alt="<?php the_title();?>" />
+			</div>
+				<div class="entry">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec risus gravida lacus adipiscing rhoncus. Proin tincidunt, ipsum vel volutpat fringilla, metus massa ornare est, in sagittis risus mi at lectus. Maecenas vel nibh urna, a venenatis odio. Pellentesque sit amet neque sem. Donec tincidunt dictum dolor ac placerat.					
+				</div>	
+		</div> <!-- /.children -->
 		
-		<?php SWPMOutput(1, 3,'News', 1); ?>
-			
+		<div class="box left">
+			<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Last Article Segment 2</a></h3>
+			<div class="last-child-thumb">
+				<img src="<?php bloginfo('template_url');?>/images/flickr.gif" alt="<?php the_title();?>" />
+			</div>
+				<div class="entry">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec risus gravida lacus adipiscing rhoncus. Proin tincidunt, ipsum vel volutpat fringilla, metus massa ornare est, in sagittis risus mi at lectus. Maecenas vel nibh urna, a venenatis odio. Pellentesque sit amet neque sem. Donec tincidunt dictum dolor ac placerat.					
+				</div>		
+		</div> <!-- /.children -->
+		
+		<div class="box left">
+			<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Last Article Segment 3</a></h3>
+			<div class="last-child-thumb">
+				<img src="<?php bloginfo('template_url');?>/images/flickr.gif" alt="<?php the_title();?>" />
+			</div>
+				<div class="entry">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec risus gravida lacus adipiscing rhoncus. Proin tincidunt, ipsum vel volutpat fringilla, metus massa ornare est, in sagittis risus mi at lectus. Maecenas vel nibh urna, a venenatis odio. Pellentesque sit amet neque sem. Donec tincidunt dictum dolor ac placerat.					
+				</div>		
+		</div> <!-- /.children -->		
 	</div> <!-- /#last-child-container -->
 	
 	<div id="social-account" class="box left">
