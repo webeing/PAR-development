@@ -248,16 +248,8 @@ class BP_Group_Documents {
 		return $result;
 	}
 
-	public static function get_list_by_group( $group_id, $start=0, $items=0 ){
+	public static function get_list_by_group( $group_id, $start, $items ){
 		global $wpdb, $bp;
-
-		// if these parameters aren't passed, grab the entire list
-		if( 0 == $start || 0 == $items ) {
-
-			$result = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$bp->group_documents->table_name} WHERE group_id = %d ORDER BY name ASC", $group_id), ARRAY_A );
-
-			return $result;
-		}
 
 		//convert from 1-based paging to 0-based limit
 		--$start;	

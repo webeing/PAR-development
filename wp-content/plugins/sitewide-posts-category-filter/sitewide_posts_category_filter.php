@@ -118,7 +118,13 @@ class SiteWidePostsManager{
      	/*
      	 * Query SiteWide Blogs
      	 */
-     	$this->blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE $blogExclude" . $this->options, ARRAY_A);    	
+     	$this->blog_list = $wpdb->get_results("SELECT blog_id FROM wp_blogs WHERE $blogExclude" . $this->options, ARRAY_A);
+     	#echo "results: ";
+     	#var_dump($this->blog_list);
+     	#$this->blog_list = array_filter($this->blog_list, stripBlog);
+     	#$this->blog_list = array_values($this->blog_list);
+     	#var_dump($this->blog_list);
+     	
 	}
 	
 	function stripBlog($item){
@@ -171,7 +177,7 @@ class SiteWidePostsManager{
 			//echo $bid . '<br />';
 			//echo $catName . '<br />';
 	       
-            $tempSQL = " (SELECT $bid as blog_id, option_value AS blog_name, ID as post_id, post_content, post_title, post_date_gmt ,guid 
+            $tempSQL = " (SELECT option_value AS blogname, post_content, post_title, post_date_gmt ,guid 
             FROM `wp_".$bid."_posts`,`wp_".$bid."_options` 
             WHERE 
             	post_status = 'publish'  
@@ -192,19 +198,8 @@ class SiteWidePostsManager{
 	    #echo '<b>query :</b> ' . $postFromAllPost . '<br />';
 	    #$postFromAllPost .= $sqlGetPosts .= " ORDER BY post_date_gmt DESC LIMIT 0,$limit";
 	    $postList = $wpdb->get_results($postFromAllPost , ARRAY_A);
-	   	
-	    /*
-	     * Rescue original post permalinks with get_blog_permalink() template functions
-	     */
-	    $extendedPostList = array();
-	   	$temp = array();
-	    foreach ($postList as $post){
-	    	$element['permalink'] = get_blog_permalink($post['blog_id'],$post['post_id']);
-	     	// Merge the original array with the new one containing the permalinks
-	    	$extendedPostList = array_merge($post,$element);
-	    	array_push($temp, $extendedPostList);
-	    }
-	    return $temp;
+	    #var_dump($postList);
+	    return $postList;
 	}
 
 	/**
@@ -241,7 +236,6 @@ class SiteWidePostsManager{
 							$swpm_options['totalposts'], 
 							$swpm_options['categories'], 
 							$swpm_options['postsbycategory']);
-		#var_dump($postList);
 		
 		/**
 		 * Evaluate Css class pre-term
@@ -255,10 +249,10 @@ class SiteWidePostsManager{
 	    // HTML WRAPPER
     ?>
     	<div class="<?php echo $css?>-container">
-    		<h3><?php echo $post["blog_name"]; ?></h3>
+    		<h3><?php echo $post["blogname"]; ?></h3>
 	    	<div class="<?php echo $css?>-content">
 				<h2 class="<?php echo $css?>-title">
-					<a href="<?php echo $post["permalink"]; ?>" rel="bookmark" title="Permanent Link to <?php echo $post["post_title"]; ?>"><?php echo $post["post_title"]; ?></a>
+					<a href="<?php echo $post["guid"]; ?>" rel="bookmark" title="Permanent Link to <?php echo $post["post_title"]; ?>"><?php echo $post["post_title"]; ?></a>
 				</h2>
 				<span class="<?php echo $css?>-date"><?php echo mysql2date("Y | F | d",$post["post_date_gmt"]) ?></span>
 				<div class="<?php echo $css?>-entry">

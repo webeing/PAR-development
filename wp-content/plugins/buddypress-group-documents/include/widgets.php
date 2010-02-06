@@ -8,7 +8,7 @@ add_action( 'plugins_loaded', 'bp_group_documents_register_widgets' );
 class BP_Group_Documents_Widget extends WP_Widget {
 
 	function bp_group_documents_widget() {
-		parent::WP_Widget( false, $name = __( 'Recent Group Documents', 'bp-group-documents' ) );
+		parent::WP_Widget( false, $name = __( 'Recent Documents', 'bp-group-documents' ) );
 	}
 
 	function widget( $args, $instance ) {
@@ -22,8 +22,6 @@ class BP_Group_Documents_Widget extends WP_Widget {
 		     $after_title; ?>
 
 	<?php
-
-	do_action('bp_group_documents_widget_before_html');
 
 	/***
 	 * Main HTML Display
@@ -52,17 +50,14 @@ class BP_Group_Documents_Widget extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		do_action('bp_group_documents_widget_update');
-
 		$instance = $old_instance;
+
 		$instance['num_items'] = strip_tags( $new_instance['num_items'] );
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		do_action('bp_group_documents_widget_form');
-
 		$instance = wp_parse_args( (array) $instance, array( 'num_items' => 5 ) );
 		$num_items = strip_tags( $instance['num_items'] );
 		?>

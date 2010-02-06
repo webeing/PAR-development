@@ -12,7 +12,6 @@ function bp_group_documents_record_add( $document ) {
 					'component_action'=>'added_group_document',
 					'secondary_item_id'=>$document->id);
 	bp_group_documents_record_activity($params);
-	do_action('bp_group_documents_record_add',$document);
 }
 add_action('bp_group_documents_add_success','bp_group_documents_record_add',15,1);
 
@@ -28,7 +27,6 @@ function bp_group_documents_record_edit( $document ) {
 					'component_action'=>'edited_group_document',
 					'secondary_item_id'=>$document->id);
 	bp_group_documents_record_activity($params);
-	do_action('bp_group_documents_record_edit',$document);
 }
 add_action('bp_group_documents_edit_success','bp_group_documents_record_edit',15,1);
 
@@ -44,7 +42,6 @@ function bp_group_documents_record_delete( $document ) {
 					'component_action'=>'deleted_group_document',
 					'secondary_item_id'=>$document->id);
 	bp_group_documents_record_activity($params);
-	do_action('bp_group_documents_record_delete',$document);
 }
 add_action('bp_group_documents_delete_success','bp_group_documents_record_delete',15,1);
 
@@ -95,7 +92,6 @@ function bp_group_documents_delete_activity_by_document( $document ) {
 					'secondary_item_id' => $document->id );
 
 	bp_group_documents_delete_activity( $params );
-	do_action('bp_group_documents_delete_activity_by_document',$document);
 }
 add_action('bp_group_documents_delete_success','bp_group_documents_delete_activity_by_document',14,1);
 add_action('bp_group_documents_delete_with_group','bp_group_documents_delete_activity_by_document');
