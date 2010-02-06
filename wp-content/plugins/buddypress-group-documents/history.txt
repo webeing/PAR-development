@@ -1,3 +1,19 @@
+Version 0.2.4 (January 8, 2009)
+-----------------------------------------------------------
+- Fixed a bug where errors were thrown on group deletion
+
+Version 0.2.3
+------------------------------------------------------------
+- Added compatibility for BP 1.2 & BP 1.2 default theme
+- Added additional action calls for extensibility
+- Fixed bug where newlines were dropped in description
+
+Version 0.2.2 (January 5, 2009)
+------------------------------------------------------------
+- Added a few more strings for i18n
+- Added check to see if user is a member of private groups before showing documents
+- Added french translation (Coutesy of Daniel Halstenbach)
+
 Version 0.2.1 (December 28, 2009)
 ------------------------------------------------------------
 - Corrected a few l18n domains that were incorrect
@@ -5,6 +21,7 @@ Version 0.2.1 (December 28, 2009)
 - Added some additional strings for translation
 
 Version 0.2.0 (December 28, 2009)
+------------------------------------------------------------
 - Added email notifications for document uploads
 - Added option to display the filesize
 - added a stripslashes() call to file names that are used when the name field is blank

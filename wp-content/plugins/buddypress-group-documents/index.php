@@ -2,10 +2,10 @@
 /*
 Plugin Name: BP Group Documents
 Description: This BuddyPress component creates a document storage area within each group
-Version: 0.2.2
-Revision Date: January 5, 2009
+Version: 0.2.4
+Revision Date: January 8, 2009
 Requires at least: WPMU 2.8, BuddyPress 1.1
-Tested up to: WPMU 2.9, BuddyPress 1.1.3
+Tested up to: WPMU 2.9, BuddyPress 1.2
 License: Example: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Peter Anselmo, Studio66
 Author URI: http://www.studio66design.com
@@ -13,7 +13,7 @@ Site Wide Only: true
 */
 
 define ( 'BP_GROUP_DOCUMENTS_IS_INSTALLED', 1 );
-define ( 'BP_GROUP_DOCUMENTS_VERSION', '.1' );
+define ( 'BP_GROUP_DOCUMENTS_VERSION', '0.2.4' );
 define ( 'BP_GROUP_DOCUMENTS_DB_VERSION', '1' );
 define ( 'BP_GROUP_DOCUMENTS_FILE_PATH', WP_PLUGIN_DIR . '/buddypress-group-documents/documents/');
 define ( 'BP_GROUP_DOCUMENTS_FILE_URL', WP_PLUGIN_URL . '/buddypress-group-documents/documents/');
@@ -38,7 +38,7 @@ require ( WP_PLUGIN_DIR . '/buddypress-group-documents/include/notifications.php
 require ( WP_PLUGIN_DIR . '/buddypress-group-documents/include/activity.php' );
 require ( WP_PLUGIN_DIR . '/buddypress-group-documents/include/templatetags.php' );
 //TODO: make a more consistant filter system
-//require ( WP_PLUGIN_DIR . '/buddypress-group-documents/nclude/filters.php' );
+//require ( WP_PLUGIN_DIR . '/buddypress-group-documents/include/filters.php' );
 
 
 /**********************************************************************
@@ -116,6 +116,21 @@ function bp_group_documents_setup_globals() {
 	
 	/* Register this in the active components array */
 	$bp->active_components[$bp->group_documents->slug] = $bp->group_documents->id;
+	
+	switch( substr( BP_VERSION, 0, 3 ) ) {
+		case '1.2':
+			if( 'BuddyPress Classic' == get_current_theme() ) {
+				define( 'BP_GROUP_DOCUMENTS_THEME_VERSION', '1.1' );
+			} else {
+				define( 'BP_GROUP_DOCUMENTS_THEME_VERSION', '1.2' );
+			}
+		break;
+		case '1.1':
+			define( 'BP_GROUP_DOCUMENTS_THEME_VERSION', '1.1' );
+		break;
+	}
+
+	do_action('bp_group_documents_globals_loaded');
 }
 add_action( 'plugins_loaded', 'bp_group_documents_setup_globals', 5 );	
 add_action( 'admin_menu', 'bp_group_documents_setup_globals', 2 );
@@ -183,6 +198,7 @@ function bp_group_documents_setup_nav() {
 		'user_has_access' => $bp->groups->current_group->user_has_access,
 		'item_css_id' => 'group-documents' ) );
 
+	do_action('bp_group_documents_nav_setup');
 }
 add_action( 'wp', 'bp_group_documents_setup_nav', 2 );
 add_action( 'admin_menu', 'bp_group_documents_setup_nav', 2 );
@@ -201,9 +217,15 @@ function bp_group_documents_display() {
 	add_action( 'bp_template_content_header', 'bp_group_documents_display_header' );
 	add_action( 'bp_template_title', 'bp_group_documents_display_title' );
 	add_action( 'bp_template_content', 'bp_group_documents_display_content' );
-		
-	/* Load the plugin template file. */
-	bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'plugin-template' ) );
+
+	// Load the plugin template file.
+	// BP 1.1 includes a generic "plugin-template file
+	// BP 1.2 breaks it out into a group-specific template
+	if( '1.1' == BP_GROUP_DOCUMENTS_THEME_VERSION ) {
+		bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'plugin-template' ) );
+	} else {
+		bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'groups/single/plugins' ) );
+	}
 }
 
 
@@ -220,11 +242,12 @@ function bp_group_documents_display_title() {
 
 function bp_group_documents_display_content() {
 	global $bp;
-	
-	$template = new BP_Group_Documents_Template(); ?>
+
+	$template = new BP_Group_Documents_Template();?>
 
 	<div class="bp-widget">
 	<div id="bp-group-documents">
+
 
 	<?php do_action( 'template_notices' ) // (error/success feedback) ?>
 
@@ -232,27 +255,29 @@ function bp_group_documents_display_content() {
 
 	<?php if( $template->document_list && count($template->document_list >= 1) ) { ?>
 
-		<?php if( $template->show_pagination() ){ ?>
 		<div class="pagination">
 			<div id="group-documents-count" class="pag-count">
 				<?php $template->pagination_count(); ?>
 			</div>
+		<?php if( $template->show_pagination() ){ ?>
 			<div id="group-documents-count" class="pagination-links">
 				<?php $template->pagination_links(); ?>
 			</div>
-		</div>
 		<?php } ?>
+		</div>
+
 
 		<ul id="forum-topic-list" class="item-list">
 
 		<?php //loop through each document and display content along with admin options
+		$count = 0;
 		foreach( $template->document_list as $document_params ) {
 			$document = new BP_Group_Documents($document_params['id'], $document_params); ?>
 
-			<li><a href="<?php echo BP_GROUP_DOCUMENTS_FILE_URL . $document->file; ?>" target="_blank"><?php echo ($document->name)?($document->name):($document->file); ?><?php if( get_option( 'bp_group_documents_display_file_size' )) { echo ' (' . get_file_size( $document ) . ')'; } ?></a> &nbsp;
+			<li <?php if( ++$count%2 ) echo 'class="alt"';?> ><a href="<?php echo BP_GROUP_DOCUMENTS_FILE_URL . $document->file; ?>" target="_blank"><?php echo ($document->name)?($document->name):($document->file); ?><?php if( get_option( 'bp_group_documents_display_file_size' )) { echo ' (' . get_file_size( $document ) . ')'; } ?></a> &nbsp;
 			<?php printf( __( 'Uploaded by %s on %s', 'bp-group-documents'),bp_core_get_userlink($document->user_id),date( 'n/j/Y', $document->created_ts ));
 			if( BP_GROUP_DOCUMENTS_SHOW_DESCRIPTIONS){
-				echo "<br />{$document->description}";
+				echo '<br />' . nl2br($document->description);
 			}
 			//show edit and delete options if user is privileged
 			echo '<div class="admin-links">';
@@ -280,8 +305,9 @@ function bp_group_documents_display_content() {
 	<?php //-------------------------------------------------------DETAIL VIEW-- ?>
 	<?php if( $template->show_detail ){ ?>
 	<div id="post-new-topic">
-	<p><strong><?php echo $template->header ?></strong></p>
-	<form method="post" id="bp-group-documents-form" action="<?php echo $template->action_link; ?>" enctype="multipart/form-data" />
+	<h3><?php echo $template->header ?></h3>
+
+	<form method="post" id="bp-group-documents-form" class="standard-form" action="<?php echo $template->action_link; ?>" enctype="multipart/form-data" />
 	<input type="hidden" name="bp_group_documents_operation" value="<?php echo $template->operation; ?>" />
 	<input type="hidden" name="bp_group_documents_id" value="<?php echo $template->id; ?>" />
 			<?php if( $template->operation == 'add' ) { ?>
@@ -442,10 +468,12 @@ function get_file_size( $document, $precision = 1 ) {
 function bp_group_documents_remove_data( $group_id ) {
 	
 	$results = BP_Group_Documents::get_list_by_group( $group_id );
-	foreach($results as $document_params) {
-		$document = new BP_Group_Documents( $document_params['id'], $document_params);
-		$document->delete();
-		do_action('bp_group_documents_delete_with_group',$document);
+	if( count( $results ) >= 1 ) {
+		foreach($results as $document_params) {
+			$document = new BP_Group_Documents( $document_params['id'], $document_params);
+			$document->delete();
+			do_action('bp_group_documents_delete_with_group',$document);
+		}
 	}
 }
 add_action('groups_group_deleted','bp_group_documents_remove_data');
