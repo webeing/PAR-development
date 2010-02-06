@@ -1,7 +1,6 @@
 jQuery(document).ready( function($) {
 
 	$('form#bp-group-documents-form').submit(function(){
-	alert($('input[name=bp_group_documents_operation]').val());
 		if( $('input[name=bp_group_documents_operation]').val() == 'add' ) {
 			if($('input#bp-group-documents-file').val()) {
 				return true;

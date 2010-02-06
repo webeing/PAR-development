@@ -39,5 +39,6 @@
 				</div>
 
 			<?php endif; ?>
+		</div>
 
 			<?php do_action( 'bp_search_login_bar' ) ?>

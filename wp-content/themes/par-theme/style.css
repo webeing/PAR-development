@@ -497,15 +497,25 @@ html[xmlns] .clearfix {
 	margin:0; padding:0;
 	width:auto; height:92px;
 	background:url(images/logo-back.gif) no-repeat bottom left;
+	float:left;
 }
 		
-	#logo-back img {
-		margin:32px 0 0 0;
-		float:left;
+#logo-back img {
+	margin:15px 0 0 0;		
+	float:left;
 	}
+	
+#logout-link{
+	text-align:right;
+}
+
+#logout-link img{
+	margin:0 5px;
+	float:none;
+}
 			
 #search {
-	margin:33px 0 0 0;
+	margin:20px 0 0 0;
 	float:right;
 }
 		
