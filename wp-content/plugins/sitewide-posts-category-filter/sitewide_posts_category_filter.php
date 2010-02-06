@@ -205,12 +205,22 @@ class SiteWidePostsManager{
 	/**
 	 * Output HTML structure for category based sitewide posts
 	 */
-	function AllPostsByCategoryName(){
+	function AllPostsByCategoryName($blogtoexclude="", $totalposts="", $categories="", $postsbycategory="" ){
 		
-		/**
-		 * Retreive all options form Settings
-		 */
-		$swpm_options = $this->get_swpm_options();
+		if($blogtoexclude != "" && $totalposts!="" && $categories!="" && $postsbycategory!=""  ){
+			
+			$swpm_options['blogtoexclude'] = $blogtoexclude; 
+			$swpm_options['totalposts'] = $totalposts;
+			$swpm_options['categories'] = $categories;
+			$swpm_options['postsbycategory'] = $postsbycategory;
+		}
+		else 
+		{
+			/**
+			 * Retreive all options form Settings
+			 */
+			$swpm_options = $this->get_swpm_options();
+		}
 		
 		/*
 		 * HTML Wrapper and messages Hardcoded!
@@ -226,24 +236,30 @@ class SiteWidePostsManager{
 							$swpm_options['totalposts'], 
 							$swpm_options['categories'], 
 							$swpm_options['postsbycategory']);
+		
+		/**
+		 * Evaluate Css class pre-term
+		 */					
+		$css = explode(',',$swpm_options['categories']);
+		$css = strtolower($css[0]);
 
 		if ($postList):
 	    foreach ($postList as $post)
 	    {
 	    // HTML WRAPPER
     ?>
-    	<div class="featured-container">
+    	<div class="<?php echo $css?>-container">
     		<h3><?php echo $post["blogname"]; ?></h3>
-	    	<div class="featured-content">
-				<h2 class="featured">
+	    	<div class="<?php echo $css?>-content">
+				<h2 class="<?php echo $css?>-title">
 					<a href="<?php echo $post["guid"]; ?>" rel="bookmark" title="Permanent Link to <?php echo $post["post_title"]; ?>"><?php echo $post["post_title"]; ?></a>
 				</h2>
-				<span class="pdate"><?php echo mysql2date("Y | F | d",$post["post_date_gmt"]) ?></span>
-				<div class="featured-entry">
+				<span class="<?php echo $css?>-date"><?php echo mysql2date("Y | F | d",$post["post_date_gmt"]) ?></span>
+				<div class="<?php echo $css?>-entry">
 					<?php echo $this->truncate($post["post_content"],55); ?>
 				</div>
 			</div>
-			<div class="featured-preview">
+			<div class="<?php echo $css?>-preview">
 				<?php echo $this->catch_first_image($post,'thumb alignleft',550); ?>
 			</div>
 			<br class="clear" />
@@ -354,10 +370,11 @@ if(isset($blogsManager)){
 	register_activation_hook(__FILE__, array(&$blogsManager,'Install'));
 }
 
-function SWPMOutput(){
+function SWPMOutput($blogtoexclude="", $totalposts="", $categories="", $postsbycategory=""){
 	global $blogsManager;
 	if(isset($blogsManager)){
-		$blogsManager->AllPostsByCategoryName();
+		$blogsManager->AllPostsByCategoryName($blogtoexclude, $totalposts, $categories, $postsbycategory);
 	}
 }
+
 ?>
